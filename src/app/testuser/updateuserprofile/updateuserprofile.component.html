@@ -1,0 +1,45 @@
+<app-testuser>
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title m-0">Update User Profile</h5>
+        </div>
+        <div class="card-body">
+            <div class="form-group row mb-3" *ngIf="dataReceived">
+                <label for="staticName" class="col-sm-3 col-form-label">User Name</label>
+                <div class="col-sm-9">
+                    <input disabled type="text" class="form-control" [(ngModel)]="UName" />
+                </div>
+            </div>
+            <form (ngSubmit)="onClickSaveChanges()">
+                <div class="form-group row mb-3" *ngIf="dataReceived">
+                    <label for="staticName" class="col-sm-3 col-form-label">User Email</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="Enter Email" [(ngModel)]="UEmail" name="email"/>
+                    </div>
+                </div>
+                <div class="form-group row mb-3" *ngIf="dataReceived">
+                    <label for="staticName" class="col-sm-3 col-form-label">User Mobile</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder="Enter Mobile" [(ngModel)]="UMobile" name="mobile"/>
+                    </div>
+                </div>
+                <div class="form-group row mb-3">
+                    <label for="staticName" class="col-sm-3 col-form-label"></label>
+                    <div class="col-sm-9">
+                        <button type="submit" class="btn btn-primary" >Save Changes</button>
+                        <a style="margin-left: 20px; color:white;" class="btn btn-primary" (click)="onClickGoBack()">Go Back</a>
+                    </div>
+                    <div class="col-sm-9">
+
+                    </div>
+                </div>
+                <div style="text-align: center;" class="alert alert-success" *ngIf="isSaved">
+                    Profile Updated Successfully !!!
+                  </div>
+                  <div style="text-align: center" class="alert alert-danger" *ngIf=" !isSaved && reqSent">
+                    {{errorMessage}}
+                  </div>
+            </form>
+        </div>
+    </div>
+</app-testuser>

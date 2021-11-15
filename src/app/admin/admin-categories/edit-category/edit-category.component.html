@@ -1,0 +1,189 @@
+<app-sidebar></app-sidebar>
+
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">
+                    <i class="fas fa-list mr-1"></i>
+                    Categories
+                  </h3>
+                  <div class="card-tools">
+                    <ul class="nav nav-pills ml-auto">
+                      <li class="nav-item">
+                        <a class="nav-link" routerLinkActive="active-link" routerLink="/admin-categories/add" data-toggle="tab">Add New</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" routerLinkActive="active-link" href="/admin-categories" data-toggle="tab">View All</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div><!-- /.card-header -->
+                <div class="card-body">
+                    <div class="card" *ngIf="categoryData">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img class="img-fluid" [src]="categoryData.CatImgPath" alt="">
+                
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                <h1 class="card-title">{{categoryData.CatName}}</h1>
+                                <br><br>
+                                <p class="card-text">{{categoryData.CatDesc}}</p>
+                                <p class="card-text">Status : {{categoryData.CatStatus}}</p>
+                                <div class="alert alert-warning" *ngIf="isDeleted">
+                                    Deleted successfully!
+                                    </div>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editBookModal" (click)="handleEditCategoryModalOpen()">Edit</button>
+                                <button type="button" class="btn btn-danger ml-3" (click)="handleDelete()">Delete</button>
+
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="editBookModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Edit Category</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body" *ngIf="duplicateCategoryData">
+                                    <form ngNativeValidate (ngSubmit)="handleUpdate()">
+                                        <div class="form-group row mb-3">
+                                            <label for="staticName" class="col-sm-3 col-form-label">Name</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" placeholder="Enter modal-title" name="name"
+                                                [(ngModel)]="duplicateCategoryData.CatName" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row mb-3">
+                                            <label for="staticEmail" class="col-sm-3 col-form-label">Description</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" placeholder="Enter Description" name="desc"
+                                                [(ngModel)]="duplicateCategoryData.CatDesc" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row mb-3">
+                                            <label for="staticName" class="col-sm-3 col-form-label">Status</label>
+                                            <div class="col-sm-9">
+                                                <!-- <input type="text" class="form-control" name="email"
+                                                placeholder="Enter Email" [(ngModel)]="duplicateBookData.BStatus" required> -->
+                                                <select name="status" class="form-select" id="exampleFormControlSelect1" [(ngModel)]="duplicateCategoryData.CatStatus">
+                                                    <option value="" disabled selected hidden>Choose Status</option>
+                                                    <option value="true">Enabled</option>
+                                                    <option value="false">Disabled</option>
+                                                  </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row mb-3">
+                                            <label for="staticEmail" class="col-sm-3 col-form-label">Image</label>
+                                            <div class="col-sm-9">
+                                                <!-- <input type="text" class="form-control" name="image"
+                                                placeholder="Enter Email" [(ngModel)]="duplicateBookData.BImgPath" required> -->
+                                                <input type="file" class="form-control-file" id="exampleFormControlFile1" [(ngModel)]="duplicateCategoryData.CatImgPath" (change)="handleUpload($event)" name="image">
+                                            </div>
+                                        </div>
+
+                                        <div class="alert alert-success" *ngIf="isUpdated">
+                                        Updated successfully!
+                                        </div>
+                                        <div class="alert alert-danger" *ngIf="updateReqSent && !isUpdated">
+                                            {{status}}
+                                        </div>
+
+                                        <div class="modal-footer">
+                                        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </form>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+
+                                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  <!-- <div class="tab-content p-0">
+                    <div class=" tab-pane"   id="add-new" style="position: relative; height: 300px;">
+                     </div>
+                    <div class="tab-pane" id="enable-disable" style="position: relative; height: 300px;">
+                    </div>
+                    <div class="row tab-pane" id="view-all">
+                      <div class="col-12">
+                        <div class="card">
+                          <div class="card-header">
+                            <h3 class="card-title">User Table</h3>
+            
+                            <div class="card-tools">
+                              <div class="input-group input-group-sm" style="width: 150px;">
+                                <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+            
+                                <div class="input-group-append">
+                                  <button type="submit" class="btn btn-default">
+                                    <i class="fas fa-search"></i>
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="card-body table-responsive p-0">
+                            <table class="table table-hover text-nowrap">
+                              <thead>
+                                <tr>
+                                  <th>ID</th>
+                                  <th>User</th>
+                                  <th>Date</th>
+                                  <th>Status</th>
+                                  <th>Reason</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>183</td>
+                                  <td>John Doe</td>
+                                  <td>11-7-2014</td>
+                                  <td><span class="tag tag-success">Approved</span></td>
+                                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                                </tr>
+                                <tr>
+                                  <td>219</td>
+                                  <td>Alexander Pierce</td>
+                                  <td>11-7-2014</td>
+                                  <td><span class="tag tag-warning">Pending</span></td>
+                                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                                </tr>
+                                <tr>
+                                  <td>657</td>
+                                  <td>Bob Doe</td>
+                                  <td>11-7-2014</td>
+                                  <td><span class="tag tag-primary">Approved</span></td>
+                                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                                </tr>
+                                <tr>
+                                  <td>175</td>
+                                  <td>Mike Doe</td>
+                                  <td>11-7-2014</td>
+                                  <td><span class="tag tag-danger">Denied</span></td>
+                                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div> -->
+                </div><!-- /.card-body -->
+              </div>
+        </div><!-- /.container-fluid -->
+    </div>
+
+</div>

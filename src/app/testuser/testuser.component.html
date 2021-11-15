@@ -1,0 +1,99 @@
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>AdminLTE 3 | ChartJS</title>
+
+	<!-- Google Font: Source Sans Pro -->
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/fontawesome-free/css/all.min.css">
+	<!-- Theme style -->
+	<link rel="stylesheet" href="https://adminlte.io/themes/v3/dist/css/adminlte.min.css">
+</head>
+
+<app-header></app-header>
+<app-headings>
+	<div hd1>{{username}}</div>
+	<div hd2>User Profile</div>
+</app-headings>
+
+<div class="row">
+
+</div>
+
+<div class="container">
+	<br>
+	<div class="row">
+		<div class="col-xs-3"></div>
+		<div class="col-md-3">
+			<aside style="position: relative;"
+				style=" background-color: #fff; box-shadow: 0 14px 28px rgba(0,0,0,0),0 10px 10px rgba(0,0,0,0) !important;"
+				class="main-sidebar sidebar-LIGHT-primary elevation-4">
+				<div class="sidebar">
+					<!-- Sidebar user panel (optional) -->
+
+
+					<!-- SidebarSearch Form -->
+
+
+					<!-- Sidebar Menu -->
+					<nav class="mt-2">
+						<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+							data-accordion="false">
+							<!-- Add icons to the links using the .nav-icon class
+				   with font-awesome or any other icon font library -->
+							<li class="nav-item">
+								<a routerLink="/users" class="nav-link">
+									<i class="nav-icon fas fa-user"></i>
+									<p>
+										Profile
+								</a>
+							</li>
+							<li class="nav-item">
+								<a routerLink="/vieworders" class="nav-link">
+									<i class="nav-icon fas fa-tag"></i>
+									<p>
+										Previous Orders
+								</a>
+							</li>
+							<li class="nav-item">
+								<a routerLink="/address" class="nav-link">
+									<i class="nav-icon fas fa-home"></i>
+									<p>
+										Address
+									</p>
+								</a>
+							</li>
+
+							<li class="nav-item">
+								<a routerLink="/change-password" class="nav-link">
+									<i class="nav-icon fas fa-key"></i>
+									<p>
+										Change Password
+								</a>
+							</li>
+
+							<li class="nav-item">
+								<a (click)="logOut()" routerLink="/" class="nav-link">
+									<i class="nav-icon fas fa-lock"></i>
+									<p>
+										Sign Out
+								</a>
+							</li>
+
+
+
+						</ul>
+					</nav>
+					<!-- /.sidebar-menu -->
+				</div>
+				<!-- /.sidebar -->
+			</aside>
+		</div>
+		<div class="col-md-1"></div>
+		<div class="col-md-7">
+			<ng-content></ng-content>
+		</div>
+	</div>
+</div>

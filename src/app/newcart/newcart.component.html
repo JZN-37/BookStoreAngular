@@ -1,0 +1,151 @@
+<app-header></app-header>
+<app-headings>
+    <div hd1></div>
+    <div hd2></div>
+</app-headings>
+
+<div class="row">
+    <div class="col-md-1"></div>
+
+
+
+    <div class="col-md-10">
+        <div class="card">
+        <div class="container px-4 py-5 mx-auto">
+            <div class="row d-flex justify-content-center">
+                <div class="col-3">
+                    <h4 class="heading">Shopping Bag</h4>
+                </div>
+                <div class="col-7">
+                    <div class="row text-right">
+                        <div class="col-4">
+                            <h6 class="mt-2">Format</h6>
+                        </div>
+                        <div class="col-4">
+                            <h6 class="mt-2">Quantity</h6>
+                        </div>
+                        <div class="col-3">
+                            <h6 class="mt-2">Price</h6>
+                        </div>
+                        <div class="col-1">
+                            <h6 class="mt-2"></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row d-flex justify-content-center border-top" *ngIf="isEmptyCart">No items in cart</div>
+
+            <div class="row d-flex justify-content-center border-top" *ngFor="let book of personalCartItemList">
+                <div class="col-3">
+                    <div class="row d-flex">
+                        <div class="book"> <img [src]="book.BImgPath" class="book-img"> </div>
+                        <div class="my-auto flex-column d-flex pad-left">
+                            <h6 class="mob-text">{{book.BTitle}}</h6>
+                            <p class="mob-text">{{book.CatName}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="my-auto col-7">
+                    <div class="row text-right">
+                        <div class="col-4">
+                            <p class="mob-text">Paperback</p>
+                        </div>
+                        <!-- <div style="left: 60px;bottom: 15px;" class="col-4">
+                            <select class="form-control">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                            </select>
+                        </div> -->
+                        <div class="col-4">
+                            <h6 class="mob-text">{{book.BQty}}</h6>
+                        </div>
+                        <div class="col-3">
+                            <h6 class="mob-text">₹{{book.BPrice}}</h6>
+                        </div>
+                        <div class="col-1"  (click)="handleRemoveFromCart(book); reloadComponent();">
+                            <i style="color:red;" class="nav-icon fas fa-trash-alt"  ></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
+        
+        
+
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="row">
+
+                            <div class="col-lg-8">
+                                <div class="row px-2">
+                                    <div class="form-group col-md-6"> <label class="form-control-label">Name on
+                                            Card</label> <input style="background-color: #fff6f6;" type="text"
+                                            id="cname" name="cname" placeholder="Johnny Doe"> </div>
+                                    <div class="form-group col-md-4"> <label class="form-control-label">Expiration
+                                            Date</label> <input style="background-color: #fff6f6;" type="text" id="exp"
+                                            name="exp" placeholder="MM/YYYY"> </div>
+                                </div>
+                                <div class="row px-2">
+                                    <div class="form-group col-md-6"> <label class="form-control-label">Card
+                                            Number</label> <input style="background-color: #fff6f6;" type="text"
+                                            id="cnum" name="cnum" placeholder="1111 2222 3333 4444"> </div>
+                                    <div class="form-group col-md-4"> <label class="form-control-label">CVV</label>
+                                        <input style="background-color: #fff6f6;" type="text" id="cvv" name="cvv"
+                                            placeholder="***"> </div>
+                                </div>
+                                <div class="row px-2">
+                                    <div class="form-group col-md-4">
+                                        <label class="form-control-label">Coupon Code</label>
+                                        <input style="background-color: #fff6f6;" type="text" id="cvv" name="cvv"
+                                            placeholder="50FIFTY">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label class="form-control-label">Address</label>
+                                        <select style="background-color: #fff6f6; padding: 8px 15px 8px 15px;
+                                            width: 100%;
+                                            border-radius: 5px!important;
+                                            box-sizing: border-box;
+                                            border: 1px solid #F3E5F5;
+                                            font-size: 15px !important;
+                                            color: #000 !important;
+                                            font-weight: 300;" class="form-control">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-4 mt-2">
+                                <div class="row d-flex justify-content-between px-4">
+                                    <p class="mb-1 text-left">Subtotal</p>
+                                    <h6 class="mb-1 text-right">₹{{subtotalstring}}</h6>
+                                </div>
+                                <div class="row d-flex justify-content-between px-4">
+                                    <p class="mb-1 text-left">Shipping</p>
+                                    <h6 class="mb-1 text-right">₹{{shippingCost}}</h6>
+                                </div>
+                                <div class="row d-flex justify-content-between px-4" id="tax">
+                                    <p class="mb-1 text-left">Total (tax included)</p>
+                                    <h6 class="mb-1 text-right">₹{{totalstring}}</h6>
+                                </div> <button class="btn-block btn-blue"> <span> <a routerLink="/order-invoice" id="checkout">Checkout</a>
+                                        <span id="check-amt">₹{{totalstring}}</span> </span> </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-1"></div>
+</div>
+
+

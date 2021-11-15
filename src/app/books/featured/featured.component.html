@@ -1,0 +1,17 @@
+<app-header></app-header>
+<app-headings>
+    <div hd1 ><Fieldset>Featured Books</Fieldset></div>
+	<div hd2 >BOOKS HANDPICKED FOR YOU</div>
+</app-headings>
+<div class="space-bottom-1"></div>
+<div class="banner">
+    <div class="container">
+        <div class="l-container">
+            <div class="b-game-card" *ngFor="let book of bookList.slice(0,4)">
+                <div class="b-game-card__cover"
+                    style="background-image: url({{book.BImgPath}});" routerLink="/books/{{book.BId}}">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

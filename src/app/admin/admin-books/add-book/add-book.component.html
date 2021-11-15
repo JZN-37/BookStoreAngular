@@ -1,0 +1,246 @@
+<app-sidebar></app-sidebar>
+
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">
+                    <i class="fas fa-book mr-1"></i>
+                    Books
+                  </h3>
+                  <div class="card-tools">
+                    <ul class="nav nav-pills ml-auto">
+                      <!-- <li class="nav-item">
+                        <a class="nav-link" routerLinkActive="active-link" routerLink="/admin-books/add" data-toggle="tab">Add New</a>
+                      </li> -->
+                      <!-- <li class="nav-item">
+                        <a class="nav-link" routerLinkActive="active-link" href="/admin-books#enable-disable" data-toggle="tab">Enable/Disable</a>
+                      </li> -->
+                      <li class="nav-item">
+                        <a class="nav-link" routerLinkActive="active-link" routerLink="/admin-books" data-toggle="tab">View All</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div><!-- /.card-header -->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12 text-center mb-5">
+                          <h1>Add Book</h1>
+                        </div>
+                    
+                  
+                      <form class="col-md-6 offset-md-3" [formGroup]="addBookForm" (ngSubmit)="handleAddBook()">
+                          <div class="form-group row mb-3">
+                              <label for="staticName" class="col-sm-3 col-form-label">Category</label>
+                              <div class="col-sm-9">
+                                  <!-- <input type="text" class="form-control" placeholder="Enter Category" formControlName="BCatId" [ngClass]="{ 'is-invalid': addBookForm.get('BCatId')?.touched && addBookForm.get('BCatId')?.invalid }"/> -->
+                                  <select class="form-select" id="exampleFormControlSelect1" formControlName="BCatId">
+                                      <option value="" disabled selected hidden>Choose Category</option>
+                                      <option [value]="category.CatId" *ngFor="let category of categoryList">{{category.CatName}}</option>
+                                    </select>
+                                  <div class="invalid-feedback">
+                                      <div>Category ID is required</div>
+                                  </div>
+                              </div>
+                          </div>
+                  
+                          <div class="form-group row mb-3">
+                              <label for="staticName" class="col-sm-3 col-form-label">Title</label>
+                              <div class="col-sm-9">
+                                  <input type="text" class="form-control" placeholder="Enter Book Title" formControlName="BTitle" [ngClass]="{ 'is-invalid': addBookForm.get('BTitle')?.touched && addBookForm.get('BTitle')?.invalid }"/>
+                                  <div class="invalid-feedback">
+                                      <div>Title is required</div>
+                                  </div>
+                              </div>
+                          </div>
+                  
+                          <div class="form-group row mb-3">
+                              <label for="staticName" class="col-sm-3 col-form-label">ISBN</label>
+                              <div class="col-sm-9">
+                                  <input type="text" class="form-control" placeholder="Enter ISBN" formControlName="BISBN" [ngClass]="{ 'is-invalid': addBookForm.get('BISBN')?.touched && addBookForm.get('BISBN')?.invalid }"/>
+                                  <div class="invalid-feedback">
+                                      <div>ISBN is required</div>
+                                  </div>
+                              </div>
+                          </div>
+                  
+                          <div class="form-group row mb-3">
+                              <label for="staticName" class="col-sm-3 col-form-label">Year</label>
+                              <div class="col-sm-9">
+                                  <input type="text" class="form-control" placeholder="Enter Year" formControlName="BYear" [ngClass]="{ 'is-invalid': addBookForm.get('BYear')?.touched && addBookForm.get('BYear')?.invalid }"/>
+                                  <div class="invalid-feedback">
+                                      <div>Year is required</div>
+                                  </div>
+                              </div>
+                          </div>
+                  
+                          <div class="form-group row mb-3">
+                              <label for="staticName" class="col-sm-3 col-form-label">Price</label>
+                              <div class="col-sm-9">
+                                  <input type="text" class="form-control" placeholder="Enter Price" formControlName="BPrice" [ngClass]="{ 'is-invalid': addBookForm.get('BPrice')?.touched && addBookForm.get('BPrice')?.invalid }"/>
+                                  <div class="invalid-feedback">
+                                      <div>Price is required</div>
+                                  </div>
+                              </div>
+                          </div>
+                  
+                          <div class="form-group row mb-3">
+                              <label for="staticName" class="col-sm-3 col-form-label">Description</label>
+                              <div class="col-sm-9">
+                                  <input type="text" class="form-control" placeholder="Enter Description" formControlName="BDesc" [ngClass]="{ 'is-invalid': addBookForm.get('BDesc')?.touched && addBookForm.get('BDesc')?.invalid }"/>
+                                  <div class="invalid-feedback">
+                                      <div>Description is required</div>
+                                  </div>
+                              </div>
+                          </div>
+                  
+                          <div class="form-group row mb-3">
+                              <label for="staticName" class="col-sm-3 col-form-label">Position</label>
+                              <div class="col-sm-9">
+                                  <input type="text" class="form-control" placeholder="Enter Position" formControlName="BPosition" [ngClass]="{ 'is-invalid': addBookForm.get('BPosition')?.touched && addBookForm.get('BPosition')?.invalid }"/>
+                                  <div class="invalid-feedback">
+                                      <div>Position is required</div>
+                                  </div>
+                              </div>
+                          </div>
+                  
+                          <div class="form-group row mb-3">
+                              <label for="staticName" class="col-sm-3 col-form-label">Count</label>
+                              <div class="col-sm-9">
+                                  <input type="text" class="form-control" placeholder="Enter Count" formControlName="BCount" [ngClass]="{ 'is-invalid': addBookForm.get('BCount')?.touched && addBookForm.get('BCount')?.invalid }"/>
+                                  <div class="invalid-feedback">
+                                      <div>Count is required</div>
+                                  </div>
+                              </div>
+                          </div>
+                  
+                          <div class="form-group row mb-3">
+                              <label for="staticName" class="col-sm-3 col-form-label">Status</label>
+                              <div class="col-sm-9">
+                                  <!-- <input type="text" class="form-control" placeholder="Enter Status" formControlName="BStatus" [ngClass]="{ 'is-invalid': addBookForm.get('BStatus')?.touched && addBookForm.get('BStatus')?.invalid }"/> -->
+                                  <select class="form-select" id="exampleFormControlSelect1" formControlName="BStatus">
+                                    <option value="" disabled selected hidden>Choose Status</option>
+                                    <option value="1">Enabled</option>
+                                    <option value="0">Disabled</option>
+                                  </select>
+                                    <div class="invalid-feedback">
+                                      <div>Status is required</div>
+                                  </div>
+                              </div>
+                          </div>
+                  
+                          <div class="form-group row mb-3">
+                              <label for="staticName" class="col-sm-3 col-form-label">Image</label>
+                              <div class="col-sm-9">
+                                  <!-- <input type="text" class="form-control" placeholder="Enter Image Path" formControlName="BImgPath" [ngClass]="{ 'is-invalid': addBookForm.get('BImgPath')?.touched && addBookForm.get('BImgPath')?.invalid }"/> -->
+                                  <input type="file" class="form-control-file" id="exampleFormControlFile1" formControlName="BImgPath">
+                                  <div class="invalid-feedback">
+                                      <div>Image is required</div>
+                                  </div>
+                              </div>
+                          </div>
+                  
+                          <div class="form-group row mb-3">
+                              <label for="staticName" class="col-sm-3 col-form-label">Orders</label>
+                              <div class="col-sm-9">
+                                  <input type="text" class="form-control" placeholder="Enter Orders" formControlName="Norders" [ngClass]="{ 'is-invalid': addBookForm.get('Norders')?.touched && addBookForm.get('Norders')?.invalid }"/>
+                                  <div class="invalid-feedback">
+                                      <div>Orders is required</div>
+                                  </div>
+                              </div>
+                          </div>
+                  
+                    
+                          <div class="alert alert-success" *ngIf="isSaved">
+                            Saved Successfully.
+                          </div>
+                          <div class="alert alert-danger" *ngIf="!isSaved && reqSent">
+                            Book with entered ISBN already exists.
+                          </div>
+                    
+                          <div class="form-group row">
+                              <div class="col text-center mt-4">
+                                  <button type="submit" class="btn btn-primary" [disabled]="addBookForm.invalid">Confirm</button>
+                              </div>
+                          </div>
+                      </form>
+                      </div>
+                  <!-- <div class="tab-content p-0">
+                    <div class=" tab-pane"   id="add-new" style="position: relative; height: 300px;">
+                     </div>
+                    <div class="tab-pane" id="enable-disable" style="position: relative; height: 300px;">
+                    </div>
+                    <div class="row tab-pane" id="view-all">
+                      <div class="col-12">
+                        <div class="card">
+                          <div class="card-header">
+                            <h3 class="card-title">User Table</h3>
+            
+                            <div class="card-tools">
+                              <div class="input-group input-group-sm" style="width: 150px;">
+                                <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+            
+                                <div class="input-group-append">
+                                  <button type="submit" class="btn btn-default">
+                                    <i class="fas fa-search"></i>
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="card-body table-responsive p-0">
+                            <table class="table table-hover text-nowrap">
+                              <thead>
+                                <tr>
+                                  <th>ID</th>
+                                  <th>User</th>
+                                  <th>Date</th>
+                                  <th>Status</th>
+                                  <th>Reason</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>183</td>
+                                  <td>John Doe</td>
+                                  <td>11-7-2014</td>
+                                  <td><span class="tag tag-success">Approved</span></td>
+                                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                                </tr>
+                                <tr>
+                                  <td>219</td>
+                                  <td>Alexander Pierce</td>
+                                  <td>11-7-2014</td>
+                                  <td><span class="tag tag-warning">Pending</span></td>
+                                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                                </tr>
+                                <tr>
+                                  <td>657</td>
+                                  <td>Bob Doe</td>
+                                  <td>11-7-2014</td>
+                                  <td><span class="tag tag-primary">Approved</span></td>
+                                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                                </tr>
+                                <tr>
+                                  <td>175</td>
+                                  <td>Mike Doe</td>
+                                  <td>11-7-2014</td>
+                                  <td><span class="tag tag-danger">Denied</span></td>
+                                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div> -->
+                </div><!-- /.card-body -->
+              </div>
+        </div><!-- /.container-fluid -->
+    </div>
+
+</div>

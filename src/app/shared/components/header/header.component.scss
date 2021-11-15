@@ -1,0 +1,90 @@
+// ----
+// Heading styles
+// ----
+.heading-underline {
+    border-bottom: 1px solid #ddd;
+   
+  }
+  
+  .heading-boxed {
+    background: #fff6f6;
+    border: 1px solid #ddd;
+    padding: .5em 1rem;
+  }
+  
+  
+  
+  // ----
+  // Sub headings
+  // ----
+  .sub-heading {
+    color: #999;
+    font-size: .8em;
+    font-weight: 500;
+  }
+  
+  .sub-heading--stacked {
+    display: block;
+    margin-top: .1em;
+  }
+  
+  
+  
+  // ----
+  // Text alignments
+  // ----
+  .heading-alignment--left { text-align: left; }
+  .heading-alignment--right { text-align: right; }
+  .heading-alignment--center { text-align: center; }
+  
+  
+  
+  // ----
+  // Layout setup
+  // ----
+  .panel {
+    background: #f7f7f7;
+    border-top: 2px solid #ddd;
+    padding: 75px 50px;
+    
+    &:nth-child(even) {
+      background: #fff;
+    }
+  }
+  
+  // Header and description area
+  .panel-info {
+    margin-bottom: 50px;
+    text-align: center;
+  }
+  
+  // Center description on large screens
+  @media (min-width: 40em) {
+    .panel-text {
+      margin: auto;
+      max-width: 700px;
+    }
+  }
+  
+  
+  
+  // ----
+  // Page setup
+  // ----
+  html { box-sizing: border-box; font-size: 87.5%; height: 100%; }
+  *, *::before, *::after { box-sizing: inherit; }
+  body { 
+    font-family: 'Open Sans', sans-serif;
+    height: 100%;
+  }
+  p { margin-top: 0; }
+  @for $i from 1 through 6 {
+    h#{$i} { 
+      font-weight: 700;
+      margin-top: 0; 
+    }
+  }
+  
+  
+  
+  

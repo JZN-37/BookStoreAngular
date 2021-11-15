@@ -1,0 +1,103 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AdminLTE 3 | ChartJS</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/fontawesome-free/css/all.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="https://adminlte.io/themes/v3/dist/css/adminlte.min.css">
+</head>
+
+<aside style="position: fixed;" class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a routerLink="#" class="brand-link">
+        <img src="https://adminlte.io/themes/v3/dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
+            class="brand-image img-circle elevation-3" style="opacity: .8">
+        <span class="brand-text font-weight-light">Admin Console</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <!-- Add icons to the links using the .nav-icon class
+       with font-awesome or any other icon font library -->
+                <li class="nav-item">
+                    <a routerLink="/" class="nav-link">
+                        <i class="nav-icon fas fa-home"></i>
+                        <p>
+                            BookStore
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="/admin-dashboard" class="nav-link">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Dashboard<span class="right badge badge-danger">New</span>
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="/admin-orders" class="nav-link">
+                        <i class="nav-icon fas fa-tag"></i>
+                        <p>
+                            Orders
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="/admin-books" class="nav-link">
+                        <i class="nav-icon fas fa-book"></i>
+                        <p>
+                            Books
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="/admin-users" class="nav-link">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>
+                            Users
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="/admin-categories" class="nav-link">
+                        <i class="nav-icon fas fa-list"></i>
+                        <p>
+                            Categories
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="/admin-coupons" class="nav-link">
+                        <i class="nav-icon fas fa-shopping-cart"></i>
+                        <p>
+                            Coupons
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="/admin-password" class="nav-link">
+                        <i class="nav-icon fas fa-key"></i>
+                        <p>
+                            Change Password
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a (click)="logOut()" routerLink="/" class="nav-link">
+                        <i class="nav-icon fas fa-lock"></i>
+                        <p>
+                            Sign Out
+                    </a>
+                </li>
+
+
+
+            </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+</aside>

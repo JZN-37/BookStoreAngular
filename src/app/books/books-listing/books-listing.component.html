@@ -1,0 +1,114 @@
+<app-header></app-header>
+<div class="container mt-5 col-lg-3 search-hero">
+    <input style="text-align: center;" class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Search by title, author or category">
+  </div>
+
+<div class="space-bottom-1"></div>
+<div class="banner">
+    <div class="container">
+        <div class="l-container">
+            <div class=" b-game-card" *ngFor="let bok of enabledBookList | filter:searchText">
+                <div class="b-game-card__cover" style="background-image: url({{bok.BImgPath}});"
+                    routerLink="/books/{{bok.BId}}">
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--
+    <div class="container mt-5">
+    <div class="row">
+        
+        <div class="col-md-2 col-sm-6" *ngFor="let bok of enabledBookList">
+            <div class="product-grid">
+                  
+                  <div class="product-image ">
+<div class="container mt-5">
+    <div class="l-container">
+        <div class="col" *ngFor="let book of enabledBookList">
+            <div class="b-game-card row" routerLink="/books/{{book.BId}}">
+                <div class="b-game-card__cover"
+                    style="background-image: url({{book.BImgPath}});">
+                </div>
+            </div>
+            <div style="padding-bottom: 1rem!important;"></div>
+            <div class="row container">
+                <div style="display: flex;justify-content: center;align-items: center;">
+                    <div class="Stars" style="--rating: 3.5;"></div>
+                    <span style="font-size: 10px!important; color: #565959!important;">24,429</span>
+                </div>
+            </div>
+            <div class="row container" style="display: flex;align-items: center;">
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <span style="font-size: 25px;  font-weight: bolder; color:black !important;">₹{{book.BPrice}}</span>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <i style="color:red;" class="nav-icon fas fa-heart fa-lg"></i>
+                </div>
+                <div class="col-md-2">
+                    <i style="color:gray;" class="nav-icon fas fa-shopping-cart fa-lg"></i>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 
+        <div class="row">
+        <div class="col-md-3 col-sm-6" *ngFor="let bok of enabledBookList">
+            <div class="product-grid">
+                <div class="product-image">
+                    <a routerLink="/books/{{bok.BId}}" class="image">
+                        <img class="pic-1" [src]="bok.BImgPath">
+                        <img class="pic-2" [src]="bok.BImgPath">
+                    </a>
+                    <ul class="product-links">
+                        <li><a (click)=handleAddToCart(bok)><i class="fa fa-shopping-cart"></i></a></li>
+                        <li><a href="#"><i class="far fa-heart"></i></a></li>
+                    </ul>
+                </div>
+                <div class="product-content">
+                    <ul class="rating">
+                        <li class="fa fa-star"></li>
+                        <li class="fa fa-star"></li>
+                        <li class="fa fa-star"></li>
+                        <li class="far fa-star"></li>
+                        <li class="far fa-star"></li>
+                    </ul>
+                    <h3 class="title"><a routerLink="/books/{{bok. BId}}">{{bok.BTitle}}</a></h3>
+                    <div class="price">${{bok.BPrice}}</div>
+                </div>
+            
+        </div>
+    </div>
+</div>
+
+
+
+<!-- <div class="row">
+    <div class="col-lg-3 col-md-6" *ngFor="let book of bookList">
+        <div class="card" style="width: 18rem;" >
+            <img [src]="book.BImgPath" class="card-img-top p-1" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{book.BTitle}}</h5>
+                <p class="card-text">{{book.BDesc}}</p>
+                <div class="row">
+                    <div class="col">
+                        <a class="btn btn-primary" (click)="handleAddToCart(book)">Add to Cart</a>
+                    </div>
+                    <div class="col">
+                        <a class="btn btn-primary justify-content-end">Wishlist</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+-->
+

@@ -1,0 +1,144 @@
+<app-sidebar></app-sidebar>
+
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">
+                    <i class="fas fa-list mr-1"></i>
+                    Categories
+                  </h3>
+                  <div class="card-tools">
+                    <ul class="nav nav-pills ml-auto">
+                      <!-- <li class="nav-item">
+                        <a class="nav-link" routerLinkActive="active-link" href="/admin-categories#add-new" data-toggle="tab">Add New</a>
+                      </li> -->
+                      <li class="nav-item">
+                        <a class="nav-link" routerLinkActive="active-link" routerLink="/admin-categories" data-toggle="tab">View All</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div><!-- /.card-header -->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12 text-center mb-5">
+                          <h1>Add Category</h1>
+                        </div>
+                    
+                  
+                      <form class="col-md-6 offset-md-3" [formGroup]="addCategoryForm" (ngSubmit)="handleAddCategory()">
+                          <!-- <div class="form-group row mb-3">
+                              <label for="staticName" class="col-sm-3 col-form-label">Category</label>
+                              <div class="col-sm-9">
+                                  
+                                  <select class="form-select" id="exampleFormControlSelect1" formControlName="BCatId">
+                                      <option value="" disabled selected hidden>Choose Category</option>
+                                      <option [value]="category.CatId" *ngFor="let category of categoryList">{{category.CatName}}</option>
+                                    </select>
+                                  <div class="invalid-feedback">
+                                      <div>Category ID is required</div>
+                                  </div>
+                              </div>
+                          </div> -->
+                  
+                          <div class="form-group row mb-3">
+                              <label for="staticName" class="col-sm-3 col-form-label">Name</label>
+                              <div class="col-sm-9">
+                                  <input type="text" class="form-control" placeholder="Enter Category Name" formControlName="CatName" [ngClass]="{ 'is-invalid': addCategoryForm.get('CatName')?.touched && addCategoryForm.get('CatName')?.invalid }"/>
+                                  <div class="invalid-feedback">
+                                      <div>Name is required</div>
+                                  </div>
+                              </div>
+                          </div>                
+                  
+                          <!-- <div class="form-group row mb-3">
+                              <label for="staticName" class="col-sm-3 col-form-label">Created At</label>
+                              <div class="col-sm-9">
+                                  <input type="text" class="form-control" placeholder="Enter Year" formControlName="BYear" [ngClass]="{ 'is-invalid': addBookForm.get('BYear')?.touched && addBookForm.get('BYear')?.invalid }"/>
+                                  <div class="invalid-feedback">
+                                      <div>Year is required</div>
+                                  </div>
+                              </div>
+                          </div> -->
+                  
+                  
+                          <div class="form-group row mb-3">
+                              <label for="staticName" class="col-sm-3 col-form-label">Description</label>
+                              <div class="col-sm-9">
+                                  <input type="text" class="form-control" placeholder="Enter Description" formControlName="CatDesc" [ngClass]="{ 'is-invalid': addCategoryForm.get('CatDesc')?.touched && addCategoryForm.get('CatDesc')?.invalid }"/>
+                                  <div class="invalid-feedback">
+                                      <div>Description is required</div>
+                                  </div>
+                              </div>
+                          </div>
+                  
+                          <!-- <div class="form-group row mb-3">
+                              <label for="staticName" class="col-sm-3 col-form-label">Position</label>
+                              <div class="col-sm-9">
+                                  <input type="text" class="form-control" placeholder="Enter Position" formControlName="BPosition" [ngClass]="{ 'is-invalid': addBookForm.get('BPosition')?.touched && addBookForm.get('BPosition')?.invalid }"/>
+                                  <div class="invalid-feedback">
+                                      <div>Position is required</div>
+                                  </div>
+                              </div>
+                          </div> -->
+                  
+                          <!-- <div class="form-group row mb-3">
+                              <label for="staticName" class="col-sm-3 col-form-label">Count</label>
+                              <div class="col-sm-9">
+                                  <input type="text" class="form-control" placeholder="Enter Count" formControlName="BCount" [ngClass]="{ 'is-invalid': addBookForm.get('BCount')?.touched && addBookForm.get('BCount')?.invalid }"/>
+                                  <div class="invalid-feedback">
+                                      <div>Count is required</div>
+                                  </div>
+                              </div>
+                          </div> -->
+                  
+                          <div class="form-group row mb-3">
+                              <label for="staticName" class="col-sm-3 col-form-label">Status</label>
+                              <div class="col-sm-9">
+                                  <!-- <input type="text" class="form-control" placeholder="Enter Status" formControlName="BStatus" [ngClass]="{ 'is-invalid': addBookForm.get('BStatus')?.touched && addBookForm.get('BStatus')?.invalid }"/> -->
+                                  <select class="form-select" id="exampleFormControlSelect1" formControlName="CatStatus">
+                                    <option value="" disabled selected hidden>Choose Status</option>
+                                    <option value="1">Enabled</option>
+                                    <option value="0">Disabled</option>
+                                  </select>
+                                    <div class="invalid-feedback">
+                                      <div>Status is required</div>
+                                  </div>
+                              </div>
+                          </div>
+                  
+                          <div class="form-group row mb-3">
+                              <label for="staticName" class="col-sm-3 col-form-label">Image</label>
+                              <div class="col-sm-9">
+                                  <!-- <input type="text" class="form-control" placeholder="Enter Image Path" formControlName="BImgPath" [ngClass]="{ 'is-invalid': addBookForm.get('BImgPath')?.touched && addBookForm.get('BImgPath')?.invalid }"/> -->
+                                  <input type="file" class="form-control-file" id="exampleFormControlFile1" formControlName="CatImgPath">
+                                  <div class="invalid-feedback">
+                                      <div>Image is required</div>
+                                  </div>
+                              </div>
+                          </div>
+                  
+                    
+                          <div class="alert alert-success" *ngIf="isSaved">
+                            Saved Successfully.
+                          </div>
+                          <div class="alert alert-danger" *ngIf="!isSaved && reqSent">
+                            Book with entered ISBN already exists.
+                          </div>
+                    
+                          <div class="form-group row">
+                              <div class="col text-center mt-4">
+                                  <button type="submit" class="btn btn-primary" [disabled]="addCategoryForm.invalid">Confirm</button>
+                              </div>
+                          </div>
+                      </form>
+                      </div>
+                </div><!-- /.card-body -->
+              </div>
+        </div><!-- /.container-fluid -->
+    </div>
+
+</div>

@@ -1,0 +1,45 @@
+<app-testuser>
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title m-0">User Profile</h5>
+        </div>
+        <div class="card-body">
+            <div class="form-group row mb-3" *ngIf="dataReceived">
+                <label for="staticName" class="col-sm-3 col-form-label">User Name</label>
+                <div class="col-sm-9">
+                    <input disabled type="text" class="form-control" [value]="UName"/>
+                </div>
+            </div>
+            <div class="form-group row mb-3" *ngIf="dataReceived">
+                <label for="staticName" class="col-sm-3 col-form-label">User Email</label>
+                <div class="col-sm-9">
+                    <input disabled type="text" class="form-control" placeholder="Enter Price"  [value]="UEmail"/>
+                </div>
+            </div>
+            <div class="form-group row mb-3" *ngIf="dataReceived">
+                <label for="staticName" class="col-sm-3 col-form-label">User Mobile</label>
+                <div class="col-sm-9">
+                    <input disabled type="text" class="form-control" placeholder="Enter Price"  [value]="UMobile"/>
+                </div>
+            </div>
+            <div class="form-group row mb-3" *ngIf="dataReceived">
+                <label for="staticName" class="col-sm-3 col-form-label">Number of Orders</label>
+                <div class="col-sm-9">
+                    <input disabled type="text" class="form-control" placeholder="Enter Price"  [value]="UOrderNo"/>
+                </div>
+            </div>
+            <div class="form-group row mb-3" *ngIf="dataReceived">
+                <label for="staticName" class="col-sm-3 col-form-label">User Status</label>
+                <div class="col-sm-9">
+                    <input disabled type="text" class="form-control" placeholder="Enter Price"  [value]="UStatus"/>
+                </div>
+            </div>
+            <div class="form-group row mb-3" >
+                <label for="staticName" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-9">
+                    <a class="btn btn-primary" (click)="onClickUpdateProfile()">Update Profile</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</app-testuser>

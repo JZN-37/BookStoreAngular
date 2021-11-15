@@ -1,0 +1,84 @@
+
+<section class="vh-50 bg-image"
+  style="background-image: url('https://foodtank.com/wp-content/uploads/2021/07/alfons-morales-YLSwjSy7stw-unsplash.jpg');">
+  <div class="mask d-flex align-items-center h-100">
+    <div class="container w-400 h-500">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" 
+          style="opacity: 0.77; background-color:black; border-radius: 15px;">
+            <div class="card-body p-5">
+              <h2 class="text-uppercase text-center mb-5" style="color: white;">Create an account</h2>
+              <div>
+
+              <form [formGroup]="addUserForm" (ngSubmit)="handleAddUser()">
+
+                <div class="form-outline mb-5 ">  
+                  
+                    <input type="text" class="form-control form-control-lg" formControlName="UName" placeholder="Enter Username"
+                      [ngClass]="{ 'is-invalid': addUserForm.get('UName')?.touched && addUserForm.get('UName')?.invalid }" />
+                    
+                    <div class="invalid-feedback" style="color: rgb(255, 145, 145);">
+                      <div>User Name is required</div>
+                    </div>
+                </div>
+
+                <div class="form-outline mb-5">
+                  
+                    <input type="password" class="form-control form-control-lg" placeholder="Enter Password" formControlName="UPwd"
+                      [ngClass]="{ 'is-invalid': addUserForm.get('UPwd')?.touched && addUserForm.get('UPwd')?.invalid }" />
+                    <div class="invalid-feedback" style="color: rgb(255, 145, 145);">
+                      <div>Password is required</div>
+                    </div>
+                </div>
+
+                <div class="form-outline mb-5">
+                    <input type="text" class="form-control form-control-lg" placeholder="Enter Phone Number" formControlName="UMobile"
+                      [ngClass]="{ 'is-invalid': addUserForm.get('UMobile')?.touched && addUserForm.get('UMobile')?.invalid }" />
+                    <div class="invalid-feedback" style="color: rgb(255, 145, 145);">
+                      <div *ngIf="addUserForm.get('UMobile')?.errors?.required">Phone Number is required</div>
+                      <div *ngIf="addUserForm.get('UMobile')?.errors?.pattern">Enter a valid Phone Number</div>
+                    </div>
+                </div>
+
+                <div class="form-outline mb-5">
+                  
+                    <input type="email" class="form-control form-control-lg" placeholder="Enter Email" formControlName="UEmail"
+                      [ngClass]="{ 'is-invalid': addUserForm.get('UEmail')?.touched && addUserForm.get('UEmail')?.invalid }" />
+                    <div class="invalid-feedback" style="color: rgb(255, 145, 145);">
+                      <div *ngIf="addUserForm.get('UEmail')?.errors?.required">Email is required</div>
+                      <div *ngIf="addUserForm.get('UEmail')?.errors?.email">Enter a valid Email ID</div>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" data-bs-toggle="modal" data-bs-target="#editUserModal"
+                      [disabled]="addUserForm.invalid" style="color: black; font-weight: 750; opacity: 1;">Register</button>       
+                </div>
+
+                <p class="text-center mt-5 mb-0" style="opacity: 0.7; color: white;">Already have an account? <a routerLink="/signin" class="fw-bold text-body"><u style="color: white;">Login here</u></a></p>
+           
+              </form>
+
+
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="modal fade" id="editUserModal" tabindex="-1" role="dialog"
+aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+
+  <div style="text-align: center;" class="alert alert-success" *ngIf="isSaved">
+    Saved Successfully, Login and continue with us!!
+  </div>
+  <div style="text-align: center" class="alert alert-danger" *ngIf=" !isSaved && reqSent">
+    {{errorMessage}}
+  </div>
+</div>
+</div>
