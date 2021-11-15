@@ -1,10 +1,59 @@
 <app-testuser>
-    <div class="card">
-        <div class="card-header">
-            <h5 class="card-title m-0">Featured</h5>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+            <div class="container px-4 py-5 mx-auto">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-1"></div> 
+                    <div class="col-3">
+                        <h4 class="heading">Previous Orders</h4>
+                    </div>
+                    <div class="col-8">
+                        <div class="row text-right">
+                            <div class="col-3">
+                                <h6 class="mt-2">Quantity</h6>
+                            </div>
+                            <div class="col-2">
+                                <h6 class="mt-2">Price</h6>
+                            </div>
+                            <div class="col">
+                                <h6 class="mt-2">Date and Time of Order</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="row d-flex justify-content-center border-top" *ngIf="isOrderEmpty">No Previous Orders</div>
+    
+                <div class="row d-flex justify-content-center border-top" *ngFor="let book of OrderList">
+                    <div class="book col-1"> <img [src]="book.BImagePath" class="book-img" style="height:75px"> </div>
+                    <div class="col-3">                   
+                        <div class="row d-flex">                        
+                            <div class="my-auto flex-column d-flex pad-left">
+                                <br>
+                                <h6 class="mob-text" style="font-weight: bold;">{{book.BookTitle}}</h6>
+                                <p class="mob-text">{{book.BookCatName}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="my-auto col-8">
+                        <div class="row text-right">
+                            <div class="col-3">
+                                <h6 class="mob-text">{{book.BookQty}}</h6>
+                            </div>
+                            <div class="col-2">
+                                <h6 class="mob-text">₹{{book.BookPrice}}</h6>
+                            </div>
+                            <div class="col">
+                                <h6 class="mob-text">{{book.OrderDate}}</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                
+            </div>
+            </div>
         </div>
-        <div class="card-body">
-            <a href="#" class="btn btn-primary">Please Update</a>
-        </div>
+        <div class="col-md-1"></div>
     </div>
 </app-testuser>
