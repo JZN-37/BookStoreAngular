@@ -103,7 +103,7 @@ import { UpdateuserprofileComponent } from './testuser/updateuserprofile/updateu
     WishlistComponent,
     TestcomponentComponent,
     EditUserComponent,
-    UpdateuserprofileComponent,
+    UpdateuserprofileComponent
   ],
   imports: [
     BrowserModule,

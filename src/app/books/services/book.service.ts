@@ -18,6 +18,7 @@ export class BookService {
   private cartURL = 'http://localhost:60494/api/cart/'
   private wishURL = 'http://localhost:60494/api/wishlist/'
   private orderURL = 'http://localhost:60494/api/orders/'
+  private AddrURL = 'http://localhost:60494/api/UserAddress/'
 
   constructor( private http: HttpClient) { }
 
@@ -376,6 +377,23 @@ export class BookService {
   updateUserDetails(userDetails:any) :any{
     return this.http.put('http://localhost:60494/api/Users/'+userDetails.UId , userDetails)
 
+  }
+
+  getOrderById( id: any ): any { 
+    let APIUrl = this.orderURL + id; 
+    return this.http.get(APIUrl)
+      .pipe(map( (res: any) => {
+        return res;
+      }));
+  }
+
+  AddAddr( AddrData: any ): any { 
+    console.log(AddrData);
+    return this.http.post(this.AddrURL, AddrData)
+      .pipe( map( (res: any) => { 
+        console.log(res);
+        return res;
+      }));
   }
 
 }

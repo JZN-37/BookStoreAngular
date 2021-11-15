@@ -1,10 +1,97 @@
 <app-testuser>
-    <div class="card">
-        <div class="card-header">
-            <h5 class="card-title m-0">Featured</h5>
-        </div>
-        <div class="card-body">
-            <a href="#" class="btn btn-primary">Please Update</a>
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12 text-center mb-5">
+                            <h1>Add Address</h1>
+                        </div>
+
+
+                        <form class="col-md-12" [formGroup]="addAddrForm" (ngSubmit)="handleAddAddr()">
+
+                            <div class="form-group row">
+                                <div class="col-12">
+                                    <input type="text" class="form-control" placeholder="Address Line 1"
+                                        formControlName="UAddrLine1"
+                                        [ngClass]="{ 'is-invalid': addAddrForm.get('UAddrLine1')?.touched && addAddrForm.get('UAddrLine1')?.invalid }" />
+                                    <div class="invalid-feedback">
+                                        <div>Required</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row mb-3">
+                                
+                                <div class="col-12">
+                                    <input type="text" class="form-control" placeholder="Address Line 2"
+                                        formControlName="UAddrLine2"
+                                        [ngClass]="{ 'is-invalid': addAddrForm.get('UAddrLine2')?.touched && addAddrForm.get('UAddrLine2')?.invalid }" />
+                                    <div class="invalid-feedback">
+                                        <div>Required</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row mb-3">
+                                
+                                <div class="col-12">
+                                    <input type="text" class="form-control" placeholder="City"
+                                        formControlName="UAddrCity"
+                                        [ngClass]="{ 'is-invalid': addAddrForm.get('UAddrCity')?.touched && addAddrForm.get('UAddrCity')?.invalid }" />
+                                    <div class="invalid-feedback">
+                                        <div>Required</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row mb-3">
+                                
+                                <div class="col-12">
+                                    <input type="text" class="form-control" placeholder="Country"
+                                        formControlName="UAddrCountry"
+                                        [ngClass]="{ 'is-invalid': addAddrForm.get('UAddrCountry')?.touched && addAddrForm.get('UAddrCountry')?.invalid }" />
+                                    <div class="invalid-feedback">
+                                        <div>Required</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row mb-3">
+                                
+                                <div class="col-12">
+                                    <input type="text" class="form-control" placeholder="Pin Code"
+                                        formControlName="UAddrPincode"
+                                        [ngClass]="{ 'is-invalid': addAddrForm.get('UAddrPincode')?.touched && addAddrForm.get('UAddrPincode')?.invalid }" />
+                                    <div class="invalid-feedback">
+                                        <div>Required</div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="alert alert-success" *ngIf="isSaved">
+                                Saved Successfully.
+                            </div>
+                            <div class="alert alert-danger" *ngIf="!isSaved && reqSent">
+                                Book with entered ISBN already exists.
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col text-center mt-4">
+                                    <button type="submit" class="btn btn-primary"
+                                        [disabled]="addAddrForm.invalid">Confirm</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
+
 </app-testuser>
+<br><br><br><br><br><br>
