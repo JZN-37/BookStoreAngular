@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UserService } from 'src/app/auth/services/user.service';
 import { BookService } from 'src/app/books/services/book.service';
 
 @Component({
@@ -25,12 +26,12 @@ export class UseraddressComponent implements OnInit {
     UAddrPincode: new FormControl('', Validators.required),
   });
 
-  constructor(private bookService: BookService) { 
+  constructor(private userService: UserService) { 
   }
 
   async ngOnInit(): Promise<void> {
     this.username = localStorage.getItem('userName');
-    this.bookService.getUsers()
+    this.userService.getUsers()
       .subscribe( (res: any) => {
         console.log(res);
         this.userList = res
@@ -64,7 +65,7 @@ export class UseraddressComponent implements OnInit {
     console.log(this.addAddrForm); // submittable form data
 
     // 2. send the above data to the service
-    this.bookService.AddAddr(edittedUserDetails)
+    this.userService.AddAddr(edittedUserDetails)
       .subscribe((res: any) => { // 3. get the resp from the service
         console.log(res);
         this.reqSent = true;

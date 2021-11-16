@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from '../auth/services/user.service';
 import { BookService } from '../books/services/book.service';
 import { CartDataService } from '../cart/services/cart-data.service';
 
@@ -22,7 +23,7 @@ export class NewcartComponent implements OnInit {
   totalstring:any;
   isEmptyCart: boolean = false;
 
-  constructor(private bookService: BookService, private cartDataService: CartDataService,private router: Router) { }
+  constructor(private userService : UserService,private bookService: BookService, private cartDataService: CartDataService,private router: Router) { }
 
   async ngOnInit(): Promise<void> {
     // this.cartDataService.latestCartItemsList.subscribe((cartItems: any[] | undefined) => {
@@ -31,7 +32,7 @@ export class NewcartComponent implements OnInit {
     // });
 
     this.username = localStorage.getItem('userName');
-    this.bookService.getUsers()
+    this.userService.getUsers()
       .subscribe( (res: any) => {
         console.log(res);
         this.userList = res

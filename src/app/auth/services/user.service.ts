@@ -69,32 +69,6 @@ export class UserService {
     }
   }
 
-
-
-  getUsers(): any {
-    console.log('inside getUsers');
-
-    return this.http.get(this.REST_API_URL)
-      .pipe(map((res: any) => {
-        console.log(res);
-        return res;
-      }));
-
-  }
-
-  getUserById( id: string|null): any{
-    console.log(id);
-    let APIUrl = this.REST_API_URL + id;
-    console.log(APIUrl);
-
-    return this.http.get(APIUrl)
-    .pipe(map((res: any) => {
-      console.log(res);
-      return res;
-    }));
-       
-  }
-
   updateUser( updateableUserData: any ){
     console.log(updateableUserData);//before submittkng to rest API
     return this.http.put(this.REST_API_URL + updateableUserData.id, updateableUserData)
@@ -112,10 +86,6 @@ export class UserService {
       console.log('Its Over');
     });
   }
-
-
-
-
 
   getUserProfileInfo(id: any):any{
     return this.http.get('http://localhost:60494/api/Users/' + id)
@@ -141,6 +111,36 @@ export class UserService {
           console.log(res);
           return res;
         }));
+  }
+
+  getUserById(userId: any): Observable<any[]>{
+    return this.http.get('http://localhost:60494/api/Users/' + userId)
+    .pipe( map( (res: any) => {
+      console.log(res);
+      return res;
+    }));
+  }
+
+  updateUserDetails(userDetails:any) :any{
+    return this.http.put('http://localhost:60494/api/Users/'+userDetails.UId , userDetails)
+
+  }
+
+  getUsers(): Observable<any[]> {
+    return this.http.get('http://localhost:60494/api/Users/')
+        .pipe( map( (res: any) => {
+          console.log(res);
+          return res;
+        }));
+  }
+
+  AddAddr( AddrData: any ): any { 
+    console.log(AddrData);
+    return this.http.post('http://localhost:60494/api/UserAddress/', AddrData)
+      .pipe( map( (res: any) => { 
+        console.log(res);
+        return res;
+      }));
   }
 
 

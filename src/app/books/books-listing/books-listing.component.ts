@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { Book } from '../models/book';
 import { BookService } from '../services/book.service';
 import { CartDataService } from 'src/app/cart/services/cart-data.service';
+import { UserService } from 'src/app/auth/services/user.service';
 
 @Component({
   selector: 'app-books-listing',
@@ -34,11 +35,11 @@ export class BooksListingComponent implements OnInit {
 
   booksSubscription: Subscription | undefined = undefined;
 
-  constructor(private bookService: BookService, private cartDataService: CartDataService) { }
+  constructor(private userService: UserService,private bookService: BookService, private cartDataService: CartDataService) { }
 
   async ngOnInit(): Promise<void> {
     this.username = localStorage.getItem('userName');
-    this.bookService.getUsers()
+    this.userService.getUsers()
       .subscribe( (res: any) => {
         console.log(res);
         this.userList = res

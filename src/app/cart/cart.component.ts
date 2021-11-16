@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../auth/services/user.service';
 import { BookService } from '../books/services/book.service';
 import { CartDataService } from './services/cart-data.service';
 
@@ -16,7 +17,7 @@ export class CartComponent implements OnInit {
   username: any;
   userid: any;
 
-  constructor(private bookService: BookService, private cartDataService: CartDataService) { }
+  constructor(private userService:UserService ,private bookService: BookService, private cartDataService: CartDataService) { }
 
   async ngOnInit(): Promise<void> {
     // this.cartDataService.latestCartItemsList.subscribe((cartItems: any[] | undefined) => {
@@ -25,7 +26,7 @@ export class CartComponent implements OnInit {
     // });
 
     this.username = localStorage.getItem('userName');
-    this.bookService.getUsers()
+    this.userService.getUsers()
       .subscribe( (res: any) => {
         console.log(res);
         this.userList = res

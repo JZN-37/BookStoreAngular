@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/auth/services/user.service';
 import { BookService } from 'src/app/books/services/book.service';
 
 @Component({
@@ -25,7 +26,7 @@ export class ViewordersComponent implements OnInit {
 
   isOrderEmpty: boolean = true;
 
-  constructor(private bookService: BookService) { }
+  constructor(private userService: UserService,private bookService: BookService) { }
 
   async ngOnInit(): Promise<void> {
     // this.cartDataService.latestCartItemsList.subscribe((cartItems: any[] | undefined) => {
@@ -34,7 +35,7 @@ export class ViewordersComponent implements OnInit {
     // });
 
     this.username = localStorage.getItem('userName');
-    this.bookService.getUsers()
+    this.userService.getUsers()
       .subscribe( (res: any) => {
         console.log(res);
         this.userList = res

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { UserService } from 'src/app/auth/services/user.service';
 import { BookService } from '../services/book.service';
 
 @Component({
@@ -34,11 +35,11 @@ export class BooksDetailsComponent implements OnInit {
   isPresentWish: boolean = false;
 
 
-  constructor( private bookService: BookService, private route: ActivatedRoute) { }
+  constructor( private bookService: BookService, private userService: UserService,private route: ActivatedRoute) { }
 
   async ngOnInit(): Promise<void> {
     this.username = localStorage.getItem('userName');
-    this.bookService.getUsers()
+    this.userService.getUsers()
       .subscribe( (res: any) => {
         console.log(res);
         this.userList = res

@@ -48,7 +48,6 @@ import { NewcartComponent } from './newcart/newcart.component';
 import { OrderinvoiceComponent } from './orderinvoice/orderinvoice.component';
 import { MakeRatingComponent } from './make-rating/make-rating.component';
 import { WishlistComponent } from './books/wishlist/wishlist.component';
-import { TestcomponentComponent } from './testcomponent/testcomponent.component';
 import { CommonModule } from '@angular/common';
 import { EditUserComponent } from './admin/admin-users/edit-user/edit-user.component';
 import { UpdateuserprofileComponent } from './testuser/updateuserprofile/updateuserprofile.component';
@@ -96,7 +95,6 @@ import { UpdateuserprofileComponent } from './testuser/updateuserprofile/updateu
     OrderinvoiceComponent,
     MakeRatingComponent,
     WishlistComponent,
-    TestcomponentComponent,
     EditUserComponent,
     UpdateuserprofileComponent
   ],

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { BookService } from 'src/app/books/services/book.service';
+import { UserService } from 'src/app/auth/services/user.service';
 
 @Component({
   selector: 'app-edit-user',
@@ -40,7 +40,7 @@ export class EditUserComponent implements OnInit {
   });
  
   
-  constructor( private bookService: BookService, private route: ActivatedRoute) { }
+  constructor( private userService: UserService, private route: ActivatedRoute) { }
 
   async ngOnInit(): Promise<void> {
 
@@ -55,7 +55,7 @@ export class EditUserComponent implements OnInit {
   }
 
   fetchUserDetails(userId: any){
-    this.bookService.getUserById(userId)
+    this.userService.getUserById(userId)
     .subscribe((res:any) =>{
       this.userList=res
       this.Id = res.Id
@@ -96,7 +96,7 @@ export class EditUserComponent implements OnInit {
     }
     
     // 2. send the above data to the service
-    this.bookService.updateUserDetails(edittedUserDetails)
+    this.userService.updateUserDetails(edittedUserDetails)
       .subscribe( (res: any) => { // 3. get the resp from the service
         console.log(res);
         //console.log(res.BId);

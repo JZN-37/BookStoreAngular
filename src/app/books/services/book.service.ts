@@ -18,7 +18,6 @@ export class BookService {
   private cartURL = 'http://localhost:60494/api/cart/'
   private wishURL = 'http://localhost:60494/api/wishlist/'
   private orderURL = 'http://localhost:60494/api/orders/'
-  private AddrURL = 'http://localhost:60494/api/UserAddress/'
 
   constructor( private http: HttpClient) { }
 
@@ -132,13 +131,6 @@ export class BookService {
         }));
   }
 
-  getUsers(): Observable<any[]> {
-    return this.http.get(this.userURL)
-        .pipe( map( (res: any) => {
-          console.log(res);
-          return res;
-        }));
-  }
 
   getCart(): Observable<any[]> {
     return this.http.get(this.cartURL)
@@ -350,28 +342,7 @@ export class BookService {
         }));
   }
 
-  // getUsers(): Observable<any[]> {
-  //   return this.http.get(this.userURL)
-  //       .pipe( map( (res: any) => {
-  //         console.log(res);
-  //         return res;
-  //       }));
-  // }
 
-
-
-  getUserById(userId: any): Observable<any[]>{
-    return this.http.get('http://localhost:60494/api/Users/' + userId)
-    .pipe( map( (res: any) => {
-      console.log(res);
-      return res;
-    }));
-  }
-
-  updateUserDetails(userDetails:any) :any{
-    return this.http.put('http://localhost:60494/api/Users/'+userDetails.UId , userDetails)
-
-  }
 
   getOrderById( id: any ): any { 
     let APIUrl = this.orderURL + id; 
@@ -381,13 +352,6 @@ export class BookService {
       }));
   }
 
-  AddAddr( AddrData: any ): any { 
-    console.log(AddrData);
-    return this.http.post(this.AddrURL, AddrData)
-      .pipe( map( (res: any) => { 
-        console.log(res);
-        return res;
-      }));
-  }
+  
 
 }

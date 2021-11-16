@@ -30,7 +30,6 @@ import { HomeComponent } from './home/home.component';
 import { MakeRatingComponent } from './make-rating/make-rating.component';
 import { NewcartComponent } from './newcart/newcart.component';
 import { OrderinvoiceComponent } from './orderinvoice/orderinvoice.component';
-import { TestcomponentComponent } from './testcomponent/testcomponent.component';
 import { TestuserComponent } from './testuser/testuser.component';
 import { UpdateuserprofileComponent } from './testuser/updateuserprofile/updateuserprofile.component';
 import { UseraddressComponent } from './testuser/useraddress/useraddress.component';
@@ -76,8 +75,7 @@ const routes: Routes = [
   { path: 'order-invoice', component:OrderinvoiceComponent },
   { path: 'ncart', component:NewcartComponent },
   { path: 'rating', component:MakeRatingComponent },
-  { path: 'wishlist', component:WishlistComponent },
-  { path: 'nev', component:TestcomponentComponent},
+  { path: 'wishlist', component:WishlistComponent }
 ];
 
 @NgModule({
