@@ -358,13 +358,7 @@ export class BookService {
   //       }));
   // }
 
-  getUsersWithRole(): Observable<any[]> {
-    return this.http.get('http://localhost:60494/api/Users?withRole=true')
-        .pipe( map( (res: any) => {
-          console.log(res);
-          return res;
-        }));
-  }
+
 
   getUserById(userId: any): Observable<any[]>{
     return this.http.get('http://localhost:60494/api/Users/' + userId)

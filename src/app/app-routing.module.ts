@@ -17,7 +17,6 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { AuthGuard } from './auth/auth.guard';
 import { AddUserComponent } from './auth/components/add-user/add-user.component';
 import { SigninComponent } from './auth/components/signin/signin.component';
-import { SignoutComponent } from './auth/components/signout/signout.component';
 import { BooksDetailsComponent } from './books/books-details/books-details.component';
 import { BooksListingComponent } from './books/books-listing/books-listing.component';
 import { FeaturedComponent } from './books/featured/featured.component';
@@ -38,7 +37,6 @@ import { UseraddressComponent } from './testuser/useraddress/useraddress.compone
 import { UserpasswordComponent } from './testuser/userpassword/userpassword.component';
 import { UserprofileComponent } from './testuser/userprofile/userprofile.component';
 import { ViewordersComponent } from './testuser/vieworders/vieworders.component';
-import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent }, 
@@ -66,7 +64,6 @@ const routes: Routes = [
   { path: 'search', component:SearchComponent },
   { path: 'signup', component: AddUserComponent },
   { path: 'signin', component: SigninComponent },
-  { path: 'signout', component: SignoutComponent },
   { path: 'forbidden', component: ForbiddenComponent},//, canActivate:[AuthGuard] },
   { path: 'users', component: UserprofileComponent , canActivate:[AuthGuard] },
   // { path: 'adminpanel', component: AdminPanelComponent , canActivate:[AuthGuard] , data:{roles:['Admin']} },

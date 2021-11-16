@@ -27,9 +27,7 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { AddBookComponent } from './admin/admin-books/add-book/add-book.component';
 import { AddUserComponent } from './auth/components/add-user/add-user.component';
 import { SigninComponent } from './auth/components/signin/signin.component';
-import { SignoutComponent } from './auth/components/signout/signout.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
-import { UsersComponent } from './users/users.component';
 import { UserService } from './auth/services/user.service';
 import { AuthGuard } from './auth/auth.guard';
 import { CouponboxComponent } from './home/couponbox/couponbox.component';
@@ -79,10 +77,7 @@ import { UpdateuserprofileComponent } from './testuser/updateuserprofile/updateu
     AddBookComponent,
     AddUserComponent,
     SigninComponent,
-    SignoutComponent,
-    UsersComponent,
     ForbiddenComponent,
-    SignoutComponent,
     CouponboxComponent,
     FeatureboxComponent,
     LinkboxComponent,
