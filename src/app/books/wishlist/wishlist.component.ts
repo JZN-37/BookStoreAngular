@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/auth/services/user.service';
-import { CartDataService } from 'src/app/cart/services/cart-data.service';
 import { BookService } from '../services/book.service';
 
 @Component({
@@ -26,7 +25,7 @@ export class WishlistComponent implements OnInit {
   }
   isPresentCart:boolean= false;
 
-  constructor(private userService: UserService,private bookService: BookService, private cartDataService: CartDataService,private router: Router) { }
+  constructor(private userService: UserService,private bookService: BookService, private router: Router) { }
 
   async ngOnInit(): Promise<void> {
     // this.cartDataService.latestCartItemsList.subscribe((cartItems: any[] | undefined) => {

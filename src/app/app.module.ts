@@ -10,7 +10,6 @@ import { BooksListingComponent } from './books/books-listing/books-listing.compo
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BooksDetailsComponent } from './books/books-details/books-details.component';
-import { CartComponent } from './cart/cart.component';
 import { AdminComponent } from './admin/admin.component';
 import { SidebarComponent } from './admin/sidebar/sidebar.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
@@ -59,7 +58,6 @@ import { UpdateuserprofileComponent } from './testuser/updateuserprofile/updateu
     HomeComponent,
     BooksListingComponent,
     BooksDetailsComponent,
-    CartComponent,
     AdminComponent,
     SidebarComponent,
     DashboardComponent,
