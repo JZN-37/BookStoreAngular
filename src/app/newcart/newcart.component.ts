@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../auth/services/user.service';
 import { BookService } from '../books/services/book.service';
@@ -21,6 +21,12 @@ export class NewcartComponent implements OnInit {
   shippingCost: number = 4.99;
   totalstring:any;
   isEmptyCart: boolean = false;
+  cartItem: any = {
+    cartTempId : 0,
+    UserId: 1,
+    BId: 1,
+    BQty: 1
+  }
 
   constructor(private userService : UserService,private bookService: BookService, private router: Router) { }
 
@@ -90,6 +96,33 @@ export class NewcartComponent implements OnInit {
         this.router.routeReuseStrategy.shouldReuseRoute = () => false;
         this.router.onSameUrlNavigation = 'reload';
         this.router.navigate([currentUrl]);
+    }
+
+    handleAdd(pdt:any):void{
+      console.log("Updated count");
+      console.log(pdt);
+      this.cartItem.UserId = this.userid;
+      this.cartItem.BId = pdt.BId;
+      this.cartItem.cartTempId = pdt.CartId;
+      this.cartItem.BQty = pdt.BQty + 1;
+      this.bookService.updateCart(this.cartItem);
+    }
+
+    handleSub(pdt:any):void{
+      console.log("Decresed count");
+      console.log(pdt);
+      this.cartItem.UserId = this.userid;
+      this.cartItem.BId = pdt.BId;
+      this.cartItem.cartTempId = pdt.CartId;
+      this.cartItem.BQty = pdt.BQty - 1;     
+      if(this.cartItem.BQty == 0)
+      {
+        this.handleRemoveFromCart(pdt);
+      }
+      else
+      {
+        this.bookService.updateCart(this.cartItem);
+      }    
     }
 
 

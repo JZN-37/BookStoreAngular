@@ -11,47 +11,47 @@
 
     <div class="col-md-10">
         <div class="card">
-        <div class="container px-4 py-5 mx-auto">
-            <div class="row d-flex justify-content-center">
-                <div class="col-3">
-                    <h4 class="heading">Shopping Bag</h4>
-                </div>
-                <div class="col-7">
-                    <div class="row text-right">
-                        <div class="col-4">
-                            <h6 class="mt-2">Format</h6>
-                        </div>
-                        <div class="col-4">
-                            <h6 class="mt-2">Quantity</h6>
-                        </div>
-                        <div class="col-3">
-                            <h6 class="mt-2">Price</h6>
-                        </div>
-                        <div class="col-1">
-                            <h6 class="mt-2"></h6>
+            <div class="container px-4 py-5 mx-auto">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-3">
+                        <h4 class="heading">Shopping Bag</h4>
+                    </div>
+                    <div class="col-7">
+                        <div class="row text-right">
+                            <div class="col-4">
+                                <h6 class="mt-2">Format</h6>
+                            </div>
+                            <div class="col-3">
+                                <h6 class="mt-2">Quantity</h6>
+                            </div>
+                            <div class="col-4">
+                                <h6 class="mt-2">Price</h6>
+                            </div>
+                            <div class="col-1">
+                                <h6 class="mt-2"></h6>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="row d-flex justify-content-center border-top" *ngIf="isEmptyCart">No items in cart</div>
+                <div class="row d-flex justify-content-center border-top" *ngIf="isEmptyCart">No items in cart</div>
 
-            <div class="row d-flex justify-content-center border-top" *ngFor="let book of personalCartItemList">
-                <div class="col-3">
-                    <div class="row d-flex">
-                        <div class="book"> <img [src]="book.BImgPath" class="book-img"> </div>
-                        <div class="my-auto flex-column d-flex pad-left">
-                            <h6 class="mob-text">{{book.BTitle}}</h6>
-                            <p class="mob-text">{{book.CatName}}</p>
+                <div class="row d-flex justify-content-center border-top" *ngFor="let book of personalCartItemList">
+                    <div class="col-3">
+                        <div class="row d-flex">
+                            <div class="book"> <img [src]="book.BImgPath" class="book-img"> </div>
+                            <div class="my-auto flex-column d-flex pad-left">
+                                <h6 class="mob-text">{{book.BTitle}}</h6>
+                                <p class="mob-text">{{book.CatName}}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="my-auto col-7">
-                    <div class="row text-right">
-                        <div class="col-4">
-                            <p class="mob-text">Paperback</p>
-                        </div>
-                        <!-- <div style="left: 60px;bottom: 15px;" class="col-4">
+                    <div class="my-auto col-7">
+                        <div class="row text-right">
+                            <div class="col-4">
+                                <p class="mob-text">Paperback</p>
+                            </div>
+                            <!-- <div style="left: 60px;bottom: 15px;" class="col-4">
                             <select class="form-control">
                                 <option>1</option>
                                 <option>2</option>
@@ -59,23 +59,31 @@
                                 <option>4</option>
                             </select>
                         </div> -->
-                        <div class="col-4">
-                            <h6 class="mob-text">{{book.BQty}}</h6>
-                        </div>
-                        <div class="col-3">
-                            <h6 class="mob-text">₹{{book.BPrice}}</h6>
-                        </div>
-                        <div class="col-1"  (click)="handleRemoveFromCart(book); reloadComponent();">
-                            <i style="color:red;" class="nav-icon fas fa-trash-alt"  ></i>
+
+                            <div class="col-4">
+                                <div class="row">
+                                    <div class="col-3"></div>
+                                    <div class="col-2 qt-minus" (click)="handleSub(book); reloadComponent();">-</div>
+                                    <div class="col-3 qt">{{book.BQty}}</div>
+                                    <div class="col-2 qt-plus" (click)="handleAdd(book); reloadComponent();">+</div>
+                                    <!-- <h6 class="mob-text">{{book.BQty}}</h6> -->
+                                </div>
+                            </div>
+
+                            <div class="col-3">
+                                <h6 class="mob-text">₹{{book.BPrice}}</h6>
+                            </div>
+                            <div class="col-1" (click)="handleRemoveFromCart(book); reloadComponent();">
+                                <i style="color:red;" class="nav-icon fas fa-trash-alt"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+
             </div>
 
-            
-        </div>
-        
-        
+
 
             <div class="row justify-content-center">
                 <div class="col-lg-12">
@@ -97,7 +105,8 @@
                                             id="cnum" name="cnum" placeholder="1111 2222 3333 4444"> </div>
                                     <div class="form-group col-md-4"> <label class="form-control-label">CVV</label>
                                         <input style="background-color: #fff6f6;" type="text" id="cvv" name="cvv"
-                                            placeholder="***"> </div>
+                                            placeholder="***">
+                                    </div>
                                 </div>
                                 <div class="row px-2">
                                     <div class="form-group col-md-4">
@@ -136,7 +145,8 @@
                                 <div class="row d-flex justify-content-between px-4" id="tax">
                                     <p class="mb-1 text-left">Total (tax included)</p>
                                     <h6 class="mb-1 text-right">₹{{totalstring}}</h6>
-                                </div> <button class="btn-block btn-blue"> <span> <a routerLink="/order-invoice" id="checkout">Checkout</a>
+                                </div> <button class="btn-block btn-blue"> <span> <a routerLink="/order-invoice"
+                                            id="checkout">Checkout</a>
                                         <span id="check-amt">₹{{totalstring}}</span> </span> </button>
                             </div>
                         </div>
@@ -147,5 +157,3 @@
     </div>
     <div class="col-md-1"></div>
 </div>
-
-
