@@ -152,6 +152,14 @@ export class UserService {
   }
 
 
+  checkCouponValidity(coupon : any): any{
+    return this.http.get('http://localhost:60494/api/Discount?couponCode='+coupon)
+    .pipe( map( (res: any) => { 
+      console.log(res);
+      return res;
+    }));
+  }
+
 
   
 

@@ -22,6 +22,9 @@ export class NewcartComponent implements OnInit {
   shippingCost: number = 4.99;
   totalstring:any;
   isEmptyCart: boolean = false;
+  couponCode = "";
+  discApplied = false;
+  discount: number = 0;
   cartItem: any = {
     cartTempId : 0,
     UserId: 1,
@@ -57,7 +60,6 @@ export class NewcartComponent implements OnInit {
     });
 
     await this.delay(200); 
-
     for(var i = 0; i < this.cartItemList.length; i++){
       if( this.cartItemList[i].UserId == this.userid){
         this.personalCartItemList.push(this.cartItemList[i]);
@@ -74,12 +76,16 @@ export class NewcartComponent implements OnInit {
       this.isEmptyCart = true;
       this.shippingCost = 0;
     }
-    this.total = this.subTotal + this.shippingCost;
+    this.total = this.subTotal + this.shippingCost - this.discount;
     console.log(this.isEmptyCart);
     this.totalstring = (Math.round(this.total * 100) / 100).toFixed(2);
+
   }
 
+  priceCalculation(){
+    console.log("recalculating the price");
 
+  }
 
   delay(ms: number) {
     return new Promise( resolve => setTimeout(resolve, ms) );
@@ -126,8 +132,52 @@ export class NewcartComponent implements OnInit {
       }    
     }
 
+    validateCoupon(){
+      if(this.couponCode != ""){
+        //check if valid
+        console.log(this.couponCode , "value entered inside the coupon code field");
+      }
+      var disc = 0;
+      console.log(this.couponCode , "value entered inside the coupon code field");
+      this.userService.checkCouponValidity(this.couponCode)
+      .subscribe((res: any) => {
+        disc = Number(res);
+        this.delay(100);
+        console.log("Checking coupon validity ", disc);
+
+        if(true){
+          console.log("INSIDE DISC");
+          this.discount =  Math.round(this.subTotal * disc) / 100;
+          console.log(this.discount,"finding the discount value");
+          this.delay(50);
+          this.discApplied = true;
+        }
+  
+        if(this.discApplied == true){
+          this.discApplied = false;
+          this.total = this.subTotal + this.shippingCost - this.discount;
+          console.log(this.total, this.discount , "calculating the total after applying discount");
+          console.log(this.isEmptyCart);
+          this.totalstring = (Math.round(this.total * 100) / 100).toFixed(2);
+        }
+
+
+      });
+      
+
+    }
+
+
+
     checkOutBtn(){
       console.log("clicked on checkoutbutton ; ");
+      //check if coupon is entered
+      //if entered - ensure it is valid before placing order
+
+      console.log("Checking the coupon code field value : ", this.couponCode!="");
+
+
+
       let BookIds = [];
       let BookQtys = []
       for(var i = 0; i < this.personalCartItemList.length; i++ ){
@@ -143,10 +193,10 @@ export class NewcartComponent implements OnInit {
         BQty : BookQtys
       }
 
-      this.userService.createOrder(orderDetails)
+      /*this.userService.createOrder(orderDetails)
       .subscribe( (res: any) => {
         console.log("Placed order ", res);
-      });
+      });*/
       
     }
 
