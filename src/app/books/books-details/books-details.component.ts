@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { UserService } from 'src/app/auth/services/user.service';
+import { MakeRatingComponent } from 'src/app/make-rating/make-rating.component';
 import { BookService } from '../services/book.service';
 
 @Component({
@@ -11,7 +12,7 @@ import { BookService } from '../services/book.service';
 })
 export class BooksDetailsComponent implements OnInit {
 
-  bookData: any;
+  bookData: any = {};
   categoryList: any[] = []
   userList: any[] = []
   booksSubscription: Subscription | undefined = undefined;
@@ -35,7 +36,7 @@ export class BooksDetailsComponent implements OnInit {
   isPresentWish: boolean = false;
 
 
-  constructor( private bookService: BookService, private userService: UserService,private route: ActivatedRoute) { }
+  constructor( private bookService: BookService, private userService: UserService,private route: ActivatedRoute, private rating:MakeRatingComponent) { }
 
   async ngOnInit(): Promise<void> {
     this.username = localStorage.getItem('userName');
@@ -163,5 +164,9 @@ export class BooksDetailsComponent implements OnInit {
 
       });
     }
+  }
+
+  handleRatings(book: any) {
+    this.rating.Ratings(book,this.userid);
   }
 }

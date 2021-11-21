@@ -160,6 +160,31 @@ export class UserService {
     }));
   }
 
+  AddRatings( ratingsData: any ): any { 
+    console.log(ratingsData);
+    return this.http.post('http://localhost:60494/api/Ratings/', ratingsData)
+      .pipe( map( (res: any) => { 
+        console.log(res);
+        return res;
+      }));
+  }
+
+  UpdateRatings( ratingsData: any ): any { 
+    console.log(ratingsData);
+    return this.http.put('http://localhost:60494/api/Ratings/'+ratingsData.UserId, ratingsData)
+      .pipe( map( (res: any) => { 
+        console.log(res);
+        return res;
+      }));
+  }
+
+  getRatingsbyUser(userId: any): Observable<any[]>{
+    return this.http.get('http://localhost:60494/api/Ratings/' + userId)
+    .pipe( map( (res: any) => {
+      return res;
+    }));
+  }
+
 
   
 

@@ -1,50 +1,8 @@
-<!--
-<div class="container">
-    <div class="card" *ngIf="bookData">
-        <div class="row g-0">
-            <div class="col-md-4">
-                <img class="img-fluid" [src]="bookData.BImgPath" alt="">
-
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                <h3 class="card-title">{{bookData.BTitle}}</h3>
-                <h6>{{bookData.BDesc}}</h6>
-                <p class="card-text">{{bookData.BCat}}</p>
-                
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
--->
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | ChartJS</title>
-
-
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-
-    <link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/fontawesome-free/css/all.min.css">
-
-    <link rel="stylesheet" href="https://adminlte.io/themes/v3/dist/css/adminlte.min.css">
-</head>
 <app-header></app-header>
+
 <div class="row">
     <div class="col-md-1 space-bottom-1"></div>
     <div class="row">
-        <!--<div class="col-12 col-sm-6">
-            <h3 class="d-inline-block d-sm-none">LOWA Men’s Renegade GTX Mid Hiking Boots Review
-            </h3>
-            <div class="col-12">
-                <img src="https://adminlte.io/themes/v3/dist/img/prod-1.jpg" class="product-image"
-                    alt="Product Image">
-            </div>
-
-        </div>-->
         <div class="col">
 
 
@@ -86,7 +44,7 @@
                             <div style="padding-bottom: 1rem !important;" class="space-bottom-1"></div>
                             <a (click)="handleAddToWishList(bookData)" style="border:none; background-color: lightgray; color:red!important; font-weight: bolder; width:250px" class="banner_btn btn btn-wide btn-primary text-white">   WISHLIST  <i style="color: red;" class="fas fa-heart"></i></a>
                             <div style="padding-bottom: 1rem !important;" class="space-bottom-1"></div>
-                            <a routerLink="/rating" (click)=handleAddToCart(bookData) style="font-weight: bolder; width:250px; border: #fff6f6; background-color: #fff6f6; color:blueviolet!important; " class="banner_btn btn btn-wide btn-primary text-white">RATE THE BOOK <i class="fas fa-star"></i></a>
+                            <a routerLink="/rating" (click)=handleRatings(bookData) style="font-weight: bolder; width:250px; border: #fff6f6; background-color: #fff6f6; color:blueviolet!important; " class="banner_btn btn btn-wide btn-primary text-white">RATE THE BOOK <i class="fas fa-star"></i></a>
                         </div>
                     </div>
                 </div>
