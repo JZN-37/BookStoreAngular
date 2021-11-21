@@ -97,6 +97,15 @@ export class BooksDetailsComponent implements OnInit {
         this.cartList = res
       })
     await this.delay(50); 
+    
+    //TO DO :
+    //Change API call to retrieve data specifically for the user to avoid the first if in the below for loop
+
+
+    //here we are checking if the book is already present in the cart
+    //If so the increment the value of BQty and set isPresentCart to true
+
+    //If book is not present in cart then it goes to the line if(!this.isPresentCart){..}
     for(var i = 0; i < this.cartList.length ; i++) {
       if(this.cartList[i].UserId == this.cartItem.UserId){
         if(this.cartList[i].BId == this.cartItem.BId){
@@ -109,8 +118,10 @@ export class BooksDetailsComponent implements OnInit {
         }
       }
     }
+
+
     if(!this.isPresentCart){
-      console.log(this.cartItem);
+      console.log(this.cartItem , "This book id is a new entry to the cart");
       this.bookService.createCart(this.cartItem)
       .subscribe( (res: any) => { // 3. get the resp from the service
         //if(res == "Success"){

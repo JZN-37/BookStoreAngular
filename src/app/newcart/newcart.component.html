@@ -135,19 +135,33 @@
                             </div>
                             <div class="col-lg-4 mt-2">
                                 <div class="row d-flex justify-content-between px-4">
-                                    <p class="mb-1 text-left">Subtotal</p>
-                                    <h6 class="mb-1 text-right">₹{{subtotalstring}}</h6>
+                                    <p class = "mb-1 text-left" >
+                                        Subtotal
+                                        <span style="float:right;">
+                                            <p class="mb-1 text-right font-weight-normal">₹{{subtotalstring}}</p>
+                                        </span>
+                                    </p>
                                 </div>
                                 <div class="row d-flex justify-content-between px-4">
-                                    <p class="mb-1 text-left">Shipping</p>
-                                    <h6 class="mb-1 text-right">₹{{shippingCost}}</h6>
+                                    <p class = "mb-1" style="text-align:left;">
+                                        Shipping
+                                        <span style="float:right;">
+                                            <h6 class="mb-1 text-right">₹{{shippingCost}}</h6>
+                                        </span>
+                                    </p>
                                 </div>
+
+
                                 <div class="row d-flex justify-content-between px-4" id="tax">
-                                    <p class="mb-1 text-left">Total (tax included)</p>
-                                    <h6 class="mb-1 text-right">₹{{totalstring}}</h6>
-                                </div> <button class="btn-block btn-blue"> <span> <a routerLink="/order-invoice"
-                                            id="checkout">Checkout</a>
-                                        <span id="check-amt">₹{{totalstring}}</span> </span> </button>
+                                    <p class = "mb-1" style="text-align:left;">
+                                        Total (tax included)
+                                        <span style="float:right;">
+                                            <h6 class="mb-1 text-right">₹{{totalstring}}</h6>
+                                        </span>
+                                    </p>
+                                </div> <a routerLink="/order-invoice" id="checkout"> <button class="btn-block btn-blue">
+                                        <span> Checkout
+                                        </span> </button></a>
                             </div>
                         </div>
                     </div>
