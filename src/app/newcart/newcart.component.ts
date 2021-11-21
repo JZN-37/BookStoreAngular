@@ -1,6 +1,7 @@
 import { Component, OnChanges, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../auth/services/user.service';
+import { Book } from '../books/models/book';
 import { BookService } from '../books/services/book.service';
 
 @Component({
@@ -123,6 +124,30 @@ export class NewcartComponent implements OnInit {
       {
         this.bookService.updateCart(this.cartItem);
       }    
+    }
+
+    checkOutBtn(){
+      console.log("clicked on checkoutbutton ; ");
+      let BookIds = [];
+      let BookQtys = []
+      for(var i = 0; i < this.personalCartItemList.length; i++ ){
+        BookIds.push(this.personalCartItemList[i].BId);
+        BookQtys.push(this.personalCartItemList[i].BQty);
+      }
+
+      console.log(BookIds, BookQtys);
+
+      let orderDetails = {
+        UserId : this.userid,
+        BId : BookIds,
+        BQty : BookQtys
+      }
+
+      this.userService.createOrder(orderDetails)
+      .subscribe( (res: any) => {
+        console.log("Placed order ", res);
+      });
+      
     }
 
 

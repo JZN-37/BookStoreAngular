@@ -143,6 +143,14 @@ export class UserService {
       }));
   }
 
+  createOrder(orderDetails: any) : any{
+    return this.http.post('http://localhost:60494/api/Orders/' , orderDetails)
+    .pipe( map( (res: any) => { 
+      console.log(res);
+      return res;
+    }));
+  }
+
 
 
   
