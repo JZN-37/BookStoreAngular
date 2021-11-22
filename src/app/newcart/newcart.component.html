@@ -39,7 +39,7 @@
                 <div class="row d-flex justify-content-center border-top" *ngFor="let book of personalCartItemList">
                     <div class="col-3">
                         <div class="row d-flex">
-                            <div class="book"> <img [src]="book.BImgPath" class="book-img"> </div>
+                            <div class="book"> <img [src]="book.BImgPath" class="book-img" routerLink="/books/{{book.BId}}" style="cursor: pointer;"> </div>
                             <div class="my-auto flex-column d-flex pad-left">
                                 <h6 class="mob-text">{{book.BTitle}}</h6>
                                 <p class="mob-text">{{book.CatName}}</p>

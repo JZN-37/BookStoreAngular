@@ -49,12 +49,12 @@
                                 <app-make-rating ></app-make-rating>
                             </div>
                             <a (click)=handleAddToCart(bookData) style="font-weight: bolder; width:250px"
-                                class="banner_btn btn btn-wide btn-primary text-white">ADD TO CART <i
+                                class="banner_btn btn btn-wide btn-primary text-white" data-bs-toggle="modal" data-bs-target="#cartModal">ADD TO CART <i
                                     class="fas fa-shopping-cart"></i></a>
                             <div style="padding-bottom: 1rem !important;" class="space-bottom-1"></div>
                             <a (click)="handleAddToWishList(bookData)"
                                 style="border:none; background-color: lightgray; color:red!important; font-weight: bolder; width:250px"
-                                class="banner_btn btn btn-wide btn-primary text-white"> WISHLIST <i style="color: red;"
+                                class="banner_btn btn btn-wide btn-primary text-white" data-bs-toggle="modal" data-bs-target="#wishModal"> WISHLIST <i style="color: red;"
                                     class="fas fa-heart"></i></a>
                             <div style="padding-bottom: 1rem !important;" class="space-bottom-1"></div>
                             <a (click)=handleRatings(bookData)
@@ -74,4 +74,28 @@
 
 
     </div>
+</div>
+
+<div class="modal fade" id="cartModal" tabindex="-1" role="dialog"
+aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <div style="text-align: center;" class="alert alert-danger" *ngIf="isPresentCart">
+    Your Book is already in the Cart.  
+  </div>
+  <div style="text-align: center;" class="alert alert-success" *ngIf="!isPresentCart">
+    Successfully added to Cart.
+  </div>
+</div>
+</div>
+
+<div class="modal fade" id="wishModal" tabindex="-1" role="dialog"
+aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <div style="text-align: center;" class="alert alert-danger" *ngIf="isPresentWish">
+    Your Book is already in the Wishlist.  
+  </div>
+  <div style="text-align: center;" class="alert alert-success" *ngIf="!isPresentWish">
+    Added to Wishlist.
+  </div>
+</div>
 </div>

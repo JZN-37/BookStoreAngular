@@ -112,11 +112,11 @@ export class BooksDetailsComponent implements OnInit {
     for(var i = 0; i < this.cartList.length ; i++) {
       if(this.cartList[i].UserId == this.cartItem.UserId){
         if(this.cartList[i].BId == this.cartItem.BId){
-          console.log(this.cartItem);
-          console.log(this.cartList[i]);
-          this.cartItem.cartTempId = this.cartList[i].CartId;
-          this.cartItem.BQty = this.cartList[i].BQty + 1;
-          this.bookService.updateCart(this.cartItem);
+          // console.log(this.cartItem);
+          // console.log(this.cartList[i]);
+          // this.cartItem.cartTempId = this.cartList[i].CartId;
+          // this.cartItem.BQty = this.cartList[i].BQty + 1;
+          // this.bookService.updateCart(this.cartItem);
           this.isPresentCart = true;
         }
       }
@@ -151,8 +151,8 @@ export class BooksDetailsComponent implements OnInit {
       })
     await this.delay(200); 
     for(var i = 0; i < this.wishList.length ; i++) {
-      if(this.wishList[i].UserId == this.cartItem.UserId){
-        if(this.wishList[i].BId == this.cartItem.BId){
+      if(this.wishList[i].UserId == this.wishItem.UserId){
+        if(this.wishList[i].BId == this.wishItem.BId){
           this.isPresentWish = true;
         }
       }
