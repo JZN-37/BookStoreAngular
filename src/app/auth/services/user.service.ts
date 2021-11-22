@@ -185,7 +185,12 @@ export class UserService {
     }));
   }
 
-
+  getUserAddress(userId : any) : Observable<any[]>{
+    return this.http.get('http://localhost:60494/api/UserAddress/' + userId)
+    .pipe( map( (res: any) => {
+      return res;
+    }));
+  }
   
 
 }

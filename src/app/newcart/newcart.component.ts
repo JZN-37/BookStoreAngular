@@ -32,6 +32,9 @@ export class NewcartComponent implements OnInit {
     BQty: 1
   }
 
+  userAddressList: any[] = [];
+  shippingAddressId: number = -1;
+
   constructor(private userService : UserService,private bookService: BookService, private router: Router) { }
 
   async ngOnInit(): Promise<void> {
@@ -59,6 +62,8 @@ export class NewcartComponent implements OnInit {
       this.cartItemList = res;
     });
 
+    this.userAddress();
+
     await this.delay(200); 
     for(var i = 0; i < this.cartItemList.length; i++){
       if( this.cartItemList[i].UserId == this.userid){
@@ -80,11 +85,26 @@ export class NewcartComponent implements OnInit {
     console.log(this.isEmptyCart);
     this.totalstring = (Math.round(this.total * 100) / 100).toFixed(2);
 
+    console.log("These are the address associated with the user : " , this.userAddressList);
+
   }
 
-  priceCalculation(){
-    console.log("recalculating the price");
+  userAddress(){
+    this.userService.getUserAddress(this.userid)
+    .subscribe( (res: any) => {
+      console.log(res);
+      this.userAddressList = res;
+      
+    })
+  }
 
+  allFieldsValid(){
+    if(this.shippingAddressId == -1){
+      return true;
+    }
+    else{
+      return false;
+    }
   }
 
   delay(ms: number) {
@@ -175,6 +195,7 @@ export class NewcartComponent implements OnInit {
       //if entered - ensure it is valid before placing order
 
       console.log("Checking the coupon code field value : ", this.couponCode!="");
+      console.log("Id of the shipping address : " , this.shippingAddressId);
 
 
 
