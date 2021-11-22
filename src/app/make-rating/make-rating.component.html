@@ -1,7 +1,7 @@
-<app-header></app-header>
+<!-- <app-header></app-header> -->
 
-<div class="container">
-  <div class="feedback ">
+
+
     <form #myForm="ngForm" (ngSubmit)="handleAddRatings(myForm.value)" >
       <div class="rating ">
         <input type="radio" name="rating" id="rating-5" value="5" [ngModel]="prevrating">
@@ -169,8 +169,8 @@
 
       <button type="submit" class="banner_btn btn btn-wide btn-primary text-white" data-bs-toggle="modal" data-bs-target="#editUserModal">Submit Rating</button>
     </form>
-  </div>
-</div>
+
+
 
 <div class="modal fade" id="editUserModal" tabindex="-1" role="dialog"
 aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -12,11 +12,10 @@
                     <input type="radio" name="colors-btn" id="color-1" checked>
                     <div class="shoe-area col-md-5">
                         <div class="floating-div">
-                        <!-- <div> -->
-                            <div class="shoe-1">
                             <!-- <div> -->
-                                <img [src]="bookData.BImgPath"
-                                    alt="book">
+                            <div class="shoe-1">
+                                <!-- <div> -->
+                                <img [src]="bookData.BImgPath" alt="book">
                             </div>
                         </div>
 
@@ -25,28 +24,48 @@
                     <div class="col-md-10">
 
                         <div class="">
-                            <span style="color: #565959!important;font-size: 18px; line-height: 1.5; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">{{bookData.BDesc}}</span>
-                            <span style="display: block;color: #111;font-size: 24px;line-height: 1.33;margin-bottom: 12px;overflow: hidden;max-height: 4em;">{{bookData.BTitle}}</span>
+                            <span
+                                style="color: #565959!important;font-size: 18px; line-height: 1.5; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">{{bookData.BDesc}}</span>
+                            <span
+                                style="display: block;color: #111;font-size: 24px;line-height: 1.33;margin-bottom: 12px;overflow: hidden;max-height: 4em;">{{bookData.BTitle}}</span>
                             <div>
                                 <div>
 
-                                    <div class="Stars" style="--rating: 3.5;"></div>
+                                    <div class="Stars" style="--rating: 3.2;"></div>
                                     <span style="font-size: 10px!important; color: #565959!important;">24,429</span>
                                 </div>
                             </div>
                             <br>
-                            <div class="col-md-10 text-gray-400" style=" line-height: 1.5; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; margin-bottom: 12px;max-height: 4em;">This shocking and provocative question is at the core of the remarkable book.</div>
- 
+                            <div class="col-md-10 text-gray-400"
+                                style=" line-height: 1.5; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; margin-bottom: 12px;max-height: 4em;">
+                                This shocking and provocative question is at the core of the remarkable book.</div>
+                            
                             <div style="width:250px" class="card-body">
-                                <span style="font-size: 35px;  font-weight: bolder; align-items: center; color: #111 !important;">₹{{bookData.BPrice}}</span>
+                                <span
+                                    style="font-size: 35px;  font-weight: bolder; align-items: center; color: #111 !important;">₹{{bookData.BPrice}}</span>
                             </div>
-                            <a (click)=handleAddToCart(bookData) style="font-weight: bolder; width:250px" class="banner_btn btn btn-wide btn-primary text-white">ADD TO CART <i class="fas fa-shopping-cart"></i></a>
+                            <div class="float-right" *ngIf="reqRat">
+                                <button (click)="closeRat()" type="button" class="btn-close" aria-label="Close"></button>
+                                <app-make-rating ></app-make-rating>
+                            </div>
+                            <a (click)=handleAddToCart(bookData) style="font-weight: bolder; width:250px"
+                                class="banner_btn btn btn-wide btn-primary text-white">ADD TO CART <i
+                                    class="fas fa-shopping-cart"></i></a>
                             <div style="padding-bottom: 1rem !important;" class="space-bottom-1"></div>
-                            <a (click)="handleAddToWishList(bookData)" style="border:none; background-color: lightgray; color:red!important; font-weight: bolder; width:250px" class="banner_btn btn btn-wide btn-primary text-white">   WISHLIST  <i style="color: red;" class="fas fa-heart"></i></a>
+                            <a (click)="handleAddToWishList(bookData)"
+                                style="border:none; background-color: lightgray; color:red!important; font-weight: bolder; width:250px"
+                                class="banner_btn btn btn-wide btn-primary text-white"> WISHLIST <i style="color: red;"
+                                    class="fas fa-heart"></i></a>
                             <div style="padding-bottom: 1rem !important;" class="space-bottom-1"></div>
-                            <a routerLink="/rating" (click)=handleRatings(bookData) style="font-weight: bolder; width:250px; border: #fff6f6; background-color: #fff6f6; color:blueviolet!important; " class="banner_btn btn btn-wide btn-primary text-white">RATE THE BOOK <i class="fas fa-star"></i></a>
+                            <a (click)=handleRatings(bookData)
+                                style="font-weight: bolder; width:250px; border: #fff6f6; background-color: #fff6f6; color:blueviolet!important; "
+                                class="banner_btn btn btn-wide btn-primary text-white">RATE THE BOOK <i
+                                    class="fas fa-star"></i></a>
+
                         </div>
+                        
                     </div>
+
                 </div>
             </div>
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { UserService } from 'src/app/auth/services/user.service';
@@ -10,6 +10,7 @@ import { BookService } from '../services/book.service';
   templateUrl: './books-details.component.html',
   styleUrls: ['./books-details.component.scss']
 })
+
 export class BooksDetailsComponent implements OnInit {
 
   bookData: any = {};
@@ -34,6 +35,7 @@ export class BooksDetailsComponent implements OnInit {
   }
   isPresentCart : boolean = false;
   isPresentWish: boolean = false;
+  reqRat: boolean = false;
 
 
   constructor( private bookService: BookService, private userService: UserService,private route: ActivatedRoute, private rating:MakeRatingComponent) { }
@@ -168,5 +170,12 @@ export class BooksDetailsComponent implements OnInit {
 
   handleRatings(book: any) {
     this.rating.Ratings(book,this.userid);
+    this.reqRat = true;
   }
+
+  closeRat(){
+    this.reqRat = false;
+  }
+
+
 }
