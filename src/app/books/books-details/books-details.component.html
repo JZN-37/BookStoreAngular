@@ -25,21 +25,21 @@
 
                         <div class="">
                             <span
-                                style="color: #565959!important;font-size: 18px; line-height: 1.5; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">{{bookData.BDesc}}</span>
-                            <span
-                                style="display: block;color: #111;font-size: 24px;line-height: 1.33;margin-bottom: 12px;overflow: hidden;max-height: 4em;">{{bookData.BTitle}}</span>
+                                style="display: block;color: #111;font-size: 40px;font-weight: bold;line-height: 1.33;margin-bottom: 12px;overflow: hidden;max-height: 4em;">{{bookData.BTitle}}</span>
                             <div>
                                 <div>
 
-                                    <div class="Stars" style="--rating: 3.2;"></div>
-                                    <span style="font-size: 10px!important; color: #565959!important;">24,429</span>
+                                    <div class="Stars" style="--rating: {{bookData.BPosition*5}};"></div>
+                                    <span style="font-size: 10px!important; color: #565959!important;">{{bookData.BPosition*5}}</span>
+                                    <br>
+                                    <span style="font-size: 10px!important; color: #565959!important;">{{bookData.Norders}} orders till now</span>
                                 </div>
                             </div>
                             <br>
                             <div class="col-md-10 text-gray-400"
-                                style=" line-height: 1.5; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; margin-bottom: 12px;max-height: 4em;">
-                                This shocking and provocative question is at the core of the remarkable book.</div>
-                            
+                                style="line-height: 1.5; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; margin-bottom: 12px;max-height: 4em;">
+                                <a style="cursor: pointer; font-style: italic;" data-bs-toggle="modal" data-bs-target="#DescModal">Click Here</a> to take a glimpse on the Book to know more and to know the Author / ....</div>
+                                
                             <div style="width:250px" class="card-body">
                                 <span
                                     style="font-size: 35px;  font-weight: bolder; align-items: center; color: #111 !important;">₹{{bookData.BPrice}}</span>
@@ -96,6 +96,15 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
   </div>
   <div style="text-align: center;" class="alert alert-success" *ngIf="!isPresentWish">
     Added to Wishlist.
+  </div>
+</div>
+</div>
+
+<div class="modal fade" id="DescModal" tabindex="-1" role="dialog"
+aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <div style="text-align: center;" class="alert alert-info">
+    {{bookData.BDesc}}
   </div>
 </div>
 </div>

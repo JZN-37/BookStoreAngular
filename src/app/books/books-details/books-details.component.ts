@@ -177,5 +177,11 @@ export class BooksDetailsComponent implements OnInit {
     this.reqRat = false;
   }
 
+  isReadMore = true
+
+  showText() {
+     this.isReadMore = !this.isReadMore
+  }
+
 
 }
