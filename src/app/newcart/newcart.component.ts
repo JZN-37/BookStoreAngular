@@ -193,10 +193,10 @@ export class NewcartComponent implements OnInit {
         BQty : BookQtys
       }
 
-      /*this.userService.createOrder(orderDetails)
+      this.userService.createOrder(orderDetails)
       .subscribe( (res: any) => {
         console.log("Placed order ", res);
-      });*/
+      });
       
     }
 
