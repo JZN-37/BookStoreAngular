@@ -148,6 +148,24 @@ export class BookService {
         }));
   }
 
+  getCartById( id: string | null ): any { 
+    let APIUrl = this.cartURL + id; 
+
+    return this.http.get(APIUrl)
+      .pipe(map( (res: any) => {
+        return res;
+      }));
+  }
+
+  getWishById( id: string | null ): any { 
+    let APIUrl = this.wishURL + id; 
+
+    return this.http.get(APIUrl)
+      .pipe(map( (res: any) => {
+        return res;
+      }));
+  }
+
   getBookById( id: string | null ): any { 
     let APIUrl = this.REST_API_URL + id; 
 

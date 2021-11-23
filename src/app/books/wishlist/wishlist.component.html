@@ -68,7 +68,7 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div style="text-align: center;" class="alert alert-danger" *ngIf="isPresentCart">
     Your Book is already in the Cart.  
   </div>
-  <div style="text-align: center;" class="alert alert-success" *ngIf="!isPresentCart">
+  <div style="text-align: center;" class="alert alert-success" *ngIf="!isPresentCart && isSaved">
     Successfully added to Cart.
   </div>
 </div>

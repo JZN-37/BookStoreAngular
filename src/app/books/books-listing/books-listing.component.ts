@@ -22,7 +22,7 @@ export class BooksListingComponent implements OnInit {
     .subscribe( (res: any) => {
       this.bookList = res;
     });
-    await this.delay(200);
+    await this.delay(80);
     for (var i = 0; i < this.bookList.length; i++){
       if( this.bookList[i].BStatus == true ){
         this.enabledBookList.push(this.bookList[i])
