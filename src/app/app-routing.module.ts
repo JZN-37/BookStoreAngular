@@ -21,7 +21,6 @@ import { BooksDetailsComponent } from './books/books-details/books-details.compo
 import { BooksListingComponent } from './books/books-listing/books-listing.component';
 import { FeaturedComponent } from './books/featured/featured.component';
 import { NewComponent } from './books/new/new.component';
-import { SearchComponent } from './books/search/search.component';
 import { WishlistComponent } from './books/wishlist/wishlist.component';
 import { CouponsComponent } from './coupons/coupons.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
@@ -59,7 +58,6 @@ const routes: Routes = [
   { path: 'featured', component:FeaturedComponent },
   { path: 'new', component:NewComponent },
   { path: 'coupons', component:CouponsComponent },
-  { path: 'search', component:SearchComponent },
   { path: 'signup', component: AddUserComponent },
   { path: 'signin', component: SigninComponent },
   { path: 'forbidden', component: ForbiddenComponent},//, canActivate:[AuthGuard] },

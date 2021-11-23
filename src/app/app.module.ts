@@ -21,7 +21,6 @@ import { AdminCategoriesComponent } from './admin/admin-categories/admin-categor
 import { AdminPasswordComponent } from './admin/admin-password/admin-password.component';
 import { FeaturedComponent } from './books/featured/featured.component';
 import { NewComponent } from './books/new/new.component';
-import { SearchComponent } from './books/search/search.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { AddBookComponent } from './admin/admin-books/add-book/add-book.component';
 import { AddUserComponent } from './auth/components/add-user/add-user.component';
@@ -69,7 +68,6 @@ import { UpdateuserprofileComponent } from './testuser/updateuserprofile/updateu
     AdminPasswordComponent,
     FeaturedComponent,
     NewComponent,
-    SearchComponent,
     FooterComponent,
     AddBookComponent,
     AddUserComponent,
