@@ -9,123 +9,87 @@ import { BookService } from '../services/book.service';
   styleUrls: ['./wishlist.component.scss']
 })
 export class WishlistComponent implements OnInit {
-  
-  wishItemList: any[] = [];
-  personalWishItemList : any[] = [];
-  userList : any[] = [];
-  username: any;
+
+  personalWishItemList: any[] = [];
   userid: any;
-  isEmptyWish: boolean= false;
+  isEmptyWish: boolean = false;
   cartList: any[] = []
   cartItem: any = {
-    cartTempId : 0,
-    UserId: 1,
-    BId: 1,
+    cartTempId: 0,
+    UserId: 0,
+    BId: 0,
     BQty: 1
   }
-  isPresentCart:boolean= false;
+  isPresentCart: boolean = false;
+  isSaved: boolean = false;
 
-  constructor(private userService: UserService,private bookService: BookService, private router: Router) { }
+  constructor(private userService: UserService, private bookService: BookService, private router: Router) { }
 
   async ngOnInit(): Promise<void> {
-    // this.cartDataService.latestCartItemsList.subscribe((cartItems: any[] | undefined) => {
-    //   console.log(cartItems);
-    //   this.cartItemList = cartItems;
-    // });
 
-    this.username = localStorage.getItem('userName');
-    this.userService.getUsers()
-      .subscribe( (res: any) => {
-        console.log(res);
-        this.userList = res
-      })
-      await this.delay(200); 
-      for(var i = 0; i < this.userList.length; i++){
-        console.log(this.userList[i].UName)
-        if (this.username == this.userList[i].UName){
-          this.userid = this.userList[i].Id; 
-        }
-      }
+    this.userService.getUserDetails()
+      .subscribe((res: any) => {      
+        this.userid = res;
+        console.log("Id is", this.userid);
+      });
 
-    this.bookService.getWish()
-    .subscribe( (res: any) => {
-      this.wishItemList = res;
-      console.log(this.wishItemList);
-    });
+    await this.delay(50);
 
-    await this.delay(200); 
+    this.bookService.getWishById(this.userid)
+      .subscribe((res: any) => {
+        this.personalWishItemList = res;
+        console.log(this.personalWishItemList);
+      });
 
-    for(var i = 0; i < this.wishItemList.length; i++){
-      console.log(this.userid);
-      console.log(this.wishItemList[i].UserId);
-      if( this.wishItemList[i].UserId == this.userid){
-        console.log(this.wishItemList[i]);
-        this.personalWishItemList.push(this.wishItemList[i]);
-      }
-    }
+    await this.delay(50);
     console.log(this.personalWishItemList);
 
-    if(this.personalWishItemList.length == 0){
+    if (this.personalWishItemList.length == 0) {
       this.isEmptyWish = true;
     }
-    
+
   }
 
-
-
   delay(ms: number) {
-    return new Promise( resolve => setTimeout(resolve, ms) );
+    return new Promise(resolve => setTimeout(resolve, ms));
   }
 
   async handleAddToCart(book: any): Promise<void> {
-    console.log(book);
-    console.log("handleAddToCart")
-    //this.cartDataService.updateCart(book);
-    console.log(this.userid);
     this.cartItem.UserId = this.userid;
     this.cartItem.BId = book.BId;
 
     console.log(this.cartItem);
 
-    this.bookService.getCart()
-      .subscribe( (res: any) => {
+    this.bookService.getCartById(this.userid)
+      .subscribe((res: any) => {
         console.log(res);
         this.cartList = res
       })
-    await this.delay(50); 
-    for(var i = 0; i < this.cartList.length ; i++) {
-      if(this.cartList[i].UserId == this.cartItem.UserId){
-        if(this.cartList[i].BId == this.cartItem.BId){
-          // console.log(this.cartItem);
-          // console.log(this.cartList[i]);
-          // this.cartItem.cartTempId = this.cartList[i].CartId;
-          // this.cartItem.BQty = this.cartList[i].BQty + 1;
-          // this.bookService.updateCart(this.cartItem);
+    await this.delay(50);
+    for (var i = 0; i < this.cartList.length; i++) {
+        if (this.cartList[i].BId == this.cartItem.BId) {
           this.isPresentCart = true;
-        }
-      }
+        }   
     }
-    if(!this.isPresentCart){
+    if (!this.isPresentCart) {
       console.log(this.cartItem);
       this.bookService.createCart(this.cartItem)
-      .subscribe( (res: any) => { // 3. get the resp from the service
-        //if(res == "Success"){
-        //}
-
-      });
+        .subscribe((res: any) => {
+          if(res == "Success"){
+            this.isSaved=true;
+          }
+        });
     }
   }
-  
+
   handleRemoveFromWish(pdt: any): void {
-    console.log(pdt);
-    console.log("handleRemoveFromWish")
     this.bookService.deleteWish(pdt);
   }
 
   reloadComponent() {
     let currentUrl = this.router.url;
-        this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-        this.router.onSameUrlNavigation = 'reload';
-        this.router.navigate([currentUrl]);
-    }
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate([currentUrl]);
+  }
 }

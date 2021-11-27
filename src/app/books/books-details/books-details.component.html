@@ -25,8 +25,10 @@
 
                         <div class="">
                             <span
-                                style="display: block;color: #111;font-size: 40px;font-weight: bold;line-height: 1.33;margin-bottom: 12px;overflow: hidden;max-height: 4em;">{{bookData.BTitle}}</span>
-                            <div>
+                                style="display: block;color: #111;font-size: 35px;font-weight: bold;line-height: 1.33;margin-bottom: 12px;overflow: hidden;max-height: 4em;">{{bookData.BTitle}}</span>
+                                <span
+                                style="display: block;color: #111;font-size: 25px;line-height: 1;margin-bottom: 12px;overflow: hidden;max-height: 4em;">{{bookData.BCatName}}</span>
+                                <div>
                                 <div>
 
                                     <div class="Stars" style="--rating: {{bookData.BPosition*5}};"></div>
@@ -82,7 +84,7 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div style="text-align: center;" class="alert alert-danger" *ngIf="isPresentCart">
     Your Book is already in the Cart.  
   </div>
-  <div style="text-align: center;" class="alert alert-success" *ngIf="!isPresentCart">
+  <div style="text-align: center;" class="alert alert-success" *ngIf="!isPresentCart && isSavedCart">
     Successfully added to Cart.
   </div>
 </div>
@@ -94,7 +96,7 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div style="text-align: center;" class="alert alert-danger" *ngIf="isPresentWish">
     Your Book is already in the Wishlist.  
   </div>
-  <div style="text-align: center;" class="alert alert-success" *ngIf="!isPresentWish">
+  <div style="text-align: center;" class="alert alert-success" *ngIf="!isPresentWish && isSavedWish">
     Added to Wishlist.
   </div>
 </div>
