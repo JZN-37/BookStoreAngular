@@ -45,71 +45,22 @@
                                 <thead>
                                   <tr>
                                     <th>ID</th>
-                                    <th>User</th>
-                                    <th>Date</th>
-                                    <th>Status</th>
-                                    <th>Reason</th>
-                                    <th>Status</th>
+                                    <th>UserID</th>
+                                    <th>Date of Purchase</th>
+                                    <th>Book Title</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
                                   </tr>
                                 </thead>
                                 <tbody>
-                                  <tr>
-                                    <td>183</td>
-                                    <td>John Doe</td>
-                                    <td>11-7-2014</td>
-                                    <td><span class="tag tag-success">Approved</span></td>
-                                    <td>Bacon ipsum dolor sit amet salami venison chicken.</td>
-                                    <td>
-                                      <div class="toggle">
-                                        <input type="checkbox" class="check">
-                                        <b class="b switch"></b>
-                                        <b class="b track"></b>
-                                      </div>
-                                  </td>
-                                  </tr>
-                                  <tr>
-                                    <td>183</td>
-                                    <td>John Doe</td>
-                                    <td>11-7-2014</td>
-                                    <td><span class="tag tag-success">Approved</span></td>
-                                    <td>Bacon ipsum dolor sit amet salami venison chicken.</td>
-                                    <td>
-                                      <div class="toggle">
-                                        <input type="checkbox" class="check">
-                                        <b class="b switch"></b>
-                                        <b class="b track"></b>
-                                      </div>
-                                  </td>
-                                  </tr>
-                                  <tr>
-                                    <td>183</td>
-                                    <td>John Doe</td>
-                                    <td>11-7-2014</td>
-                                    <td><span class="tag tag-success">Approved</span></td>
-                                    <td>Bacon ipsum dolor sit amet salami venison chicken.</td>
-                                    <td>
-                                      <div class="toggle">
-                                        <input type="checkbox" class="check">
-                                        <b class="b switch"></b>
-                                        <b class="b track"></b>
-                                      </div>
-                                  </td>
-                                  </tr>
-                                  <tr>
-                                    <td>183</td>
-                                    <td>John Doe</td>
-                                    <td>11-7-2014</td>
-                                    <td><span class="tag tag-success">Approved</span></td>
-                                    <td>Bacon ipsum dolor sit amet salami venison chicken.</td>
-                                    <td>
-                                      <div class="toggle">
-                                        <input type="checkbox" class="check">
-                                        <b class="b switch"></b>
-                                        <b class="b track"></b>
-                                      </div>
-                                  </td>
-                                  </tr>
-                                  
+                                  <tr *ngFor="let order of OrderList">
+                                    <td>{{order.OrderId}}</td>
+                                    <td>{{order.UserId}}</td>
+                                    <td>{{order.OrderDate.split("T")[0]}}</td>
+                                    <td><span class="tag tag-success">{{order.BookTitle}}</span></td>
+                                    <td>{{order.BookQty}}</td>
+                                    <td>{{order.BookPrice * order.BookQty}}</td>
+                                  </tr>                              
                                 </tbody>
                               </table>
                             </div>

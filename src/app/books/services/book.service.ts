@@ -352,6 +352,14 @@ export class BookService {
       }));
   }
 
+  getAllOrder( id: any ): any { 
+    let APIUrl = this.orderURL; 
+    return this.http.get(APIUrl)
+      .pipe(map( (res: any) => {
+        return res;
+      }));
+  }
+
   
 
 }
